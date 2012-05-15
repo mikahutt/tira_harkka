@@ -30,12 +30,8 @@ public class LabyrinttiSolverTest {
 
     @Before
     public void setUp() {
-        solveri = new LabyrinttiSolver(new char[][] {
-        {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
-        {'#', '.', '#', '#', '#', '.', '.', '.', '.', '#'},
-        {'#', '.', '.', '#', '#', '#', '#', '#', '.', '#'},
-        {'#', '.', '.', '.', '#', '.', '#', '#', '.', '#'},
-        {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#'}});
+        Labyrintti laby = new Labyrintti();
+        solveri = new LabyrinttiSolver(laby);
     }
 
     @After

@@ -11,10 +11,10 @@ import java.util.ArrayList;
  */
 public class LabyrinttiSolver {
 
-    private char[][] labyrintti;
+    private Labyrintti labyrintti;
 
-    public LabyrinttiSolver(char[][] taulukko) {
-        labyrintti = taulukko;
+    public LabyrinttiSolver(Labyrintti labyrintti) {
+        this.labyrintti = labyrintti;
     }
 
     public ArrayList Dijkstra() {

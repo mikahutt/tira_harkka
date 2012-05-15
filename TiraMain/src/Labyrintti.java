@@ -8,5 +8,10 @@
  * @author MH
  */
 public class Labyrintti {
+    private char[][] labyrintti;
+
+    public Labyrintti(){
+
+    }
 
 }
