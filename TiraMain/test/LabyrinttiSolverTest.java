@@ -15,6 +15,7 @@ import static org.junit.Assert.*;
  * @author MH
  */
 public class LabyrinttiSolverTest {
+    LabyrinttiSolver solveri;
 
     public LabyrinttiSolverTest() {
     }
@@ -29,16 +30,18 @@ public class LabyrinttiSolverTest {
 
     @Before
     public void setUp() {
+        solveri = new LabyrinttiSolver(new char[][] {
+        {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
+        {'#', '.', '#', '#', '#', '.', '.', '.', '.', '#'},
+        {'#', '.', '.', '#', '#', '#', '#', '#', '.', '#'},
+        {'#', '.', '.', '.', '#', '.', '#', '#', '.', '#'},
+        {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#'}});
     }
 
     @After
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    
 
 }

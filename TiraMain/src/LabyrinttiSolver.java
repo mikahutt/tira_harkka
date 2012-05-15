@@ -11,9 +11,9 @@ import java.util.ArrayList;
  */
 public class LabyrinttiSolver {
 
-    private int[][] labyrintti;
+    private char[][] labyrintti;
 
-    public LabyrinttiSolver(int[][] taulukko) {
+    public LabyrinttiSolver(char[][] taulukko) {
         labyrintti = taulukko;
     }
 
