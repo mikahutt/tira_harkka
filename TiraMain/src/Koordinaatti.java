@@ -9,33 +9,27 @@
  */
 public class Koordinaatti {
 
-    private int x;
-    private int y;
-    private int painoarvo;
+    private final int x;
+    private final int y;
+    private final int painoarvo;
 
     public int getPainoarvo() {
         return painoarvo;
     }
 
-    public void setPainoarvo(int painoarvo) {
-        this.painoarvo = painoarvo;
-    }
+  
 
     public int getX() {
         return x;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
+ 
 
     public int getY() {
         return y;
     }
 
-    public void setY(int y) {
-        this.y = y;
-    }
+
 
     public Koordinaatti(int x, int y, int painoarvo) {
         this.x = x;
