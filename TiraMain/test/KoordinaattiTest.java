@@ -32,9 +32,9 @@ public class KoordinaattiTest {
 
     @Before
     public void setUp() {
-        koordinaatti = new Koordinaatti (5,8,10);
-        koordinaatti2 = new Koordinaatti (0,0,0);
-        koordinaatti3 = new Koordinaatti (5,8,-1);
+        koordinaatti = new Koordinaatti (5,8,10, '.');
+        koordinaatti2 = new Koordinaatti (0,0,0,'#');
+        koordinaatti3 = new Koordinaatti (5,8,-1,'A');
     }
 
     @After

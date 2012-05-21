@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
  */
 public class LabyrinttiSolverTest {
     LabyrinttiSolver solveri;
+    Koordinaatti[][] koordinaatit;
 
     public LabyrinttiSolverTest() {
     }
@@ -32,10 +33,23 @@ public class LabyrinttiSolverTest {
     public void setUp() {
         Labyrintti laby = new Labyrintti();
         solveri = new LabyrinttiSolver(laby);
+        koordinaatit = new Koordinaatti[laby.labyrintinKorkeus()][laby.labyrintinLeveys()];
     }
 
     @After
     public void tearDown() {
+    }
+    
+    @Test
+    public void koordinaattienAlustuksenAloituspaikkaToimii() {
+        solveri.koordinaattienAlustus(koordinaatit);
+        assertTrue(koordinaatit[1][1].getMerkki() == 'A');
+    }
+    
+    @Test
+    public void koordinaattienAlustuksenLopetuspaikkaToimii() {
+        solveri.koordinaattienAlustus(koordinaatit);
+        assertTrue(koordinaatit[4][8].getMerkki() == 'L');
     }
 
     

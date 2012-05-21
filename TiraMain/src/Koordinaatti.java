@@ -12,6 +12,7 @@ public class Koordinaatti {
     private final int x;
     private final int y;
     private final int painoarvo;
+    private final char merkki;
 
     public int getPainoarvo() {
         return painoarvo;
@@ -23,6 +24,10 @@ public class Koordinaatti {
         return x;
     }
 
+    public char getMerkki() {
+        return merkki;
+    }
+
  
 
     public int getY() {
@@ -31,9 +36,10 @@ public class Koordinaatti {
 
 
 
-    public Koordinaatti(int x, int y, int painoarvo) {
+    public Koordinaatti(int x, int y, int painoarvo, char merkki) {
         this.x = x;
         this.y = y;
+        this.merkki = merkki;
         if (painoarvo < 0) {
             this.painoarvo = 0;
         } else {
