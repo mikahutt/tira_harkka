@@ -1,15 +1,11 @@
+package logiikka;
+
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
-/*
- * To change this template, choose Tools | Templates and open the template in
- * the editor.
- */
-/**
- *
- * @author MH
- */
+
+
 public class LabyrinttiSolver {
 
     private Labyrintti labyrintti;
@@ -17,7 +13,8 @@ public class LabyrinttiSolver {
     public LabyrinttiSolver(Labyrintti labyrintti) {
         this.labyrintti = labyrintti;
     }
-    /*
+    /**
+     * 
      * Dijkstran algoritmi, joka palauttaa Arraylistin parhaasta löydetystä reitistä
      */
     public ArrayList dijkstra() {
@@ -41,7 +38,8 @@ public class LabyrinttiSolver {
 
         return null;
     }
-    /*
+    /**
+     * 
      * Etsii parametrina saadusta koordinaatti-taulukosta aloituskohdas, eli koordinaatin, jonka merkki on 'A'
      */
     public Koordinaatti aloituksenEtsinta(Koordinaatti[][] koordinaatit) {
@@ -55,7 +53,8 @@ public class LabyrinttiSolver {
         return null;
     }
 
-    /*
+    /**
+     * 
      * Alustaa koordinaatit char-labyrintin mukaan, josta koordinaatille asetetaan koordinaatit (ei tarvitse ja poistetaan), painoarvo ja merkki. HUOM. tämä on tässä vaiheessa todella typerä ratkaisu
      *
      */
@@ -75,7 +74,8 @@ public class LabyrinttiSolver {
         }
     }
 
-    /*
+    /**
+     * 
      * "Relaksoi" eli päivittää solmun (koordinaatin) painoarvon
      */
     private void relaksoi(Labyrintti labyrintti, PriorityQueue<Koordinaatti> valekeko, Koordinaatti[][] koordinaatit, Koordinaatti p, int x, int y) {
@@ -96,7 +96,8 @@ public class LabyrinttiSolver {
         }
     }
 
-    /*
+    /**
+     * 
      * relaksoi kaikki koordinaatin vierukset, eli suorittaa leveyssuuntaisen haun.
      */
     private void relaksoiKaikkiVierukset(Koordinaatti p, Koordinaatti[][] koordinaatit, PriorityQueue valekeko) {

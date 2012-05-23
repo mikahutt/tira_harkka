@@ -3,6 +3,9 @@
  * and open the template in the editor.
  */
 
+import logiikka.LabyrinttiSolver;
+import logiikka.Koordinaatti;
+import logiikka.Labyrintti;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

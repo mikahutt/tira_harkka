@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 
+import logiikka.Koordinaatti;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

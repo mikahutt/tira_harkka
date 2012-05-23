@@ -1,3 +1,5 @@
+package logiikka;
+
 
 import java.util.Comparator;
 
