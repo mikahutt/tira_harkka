@@ -17,7 +17,9 @@ public class LabyrinttiSolver {
     public LabyrinttiSolver(Labyrintti labyrintti) {
         this.labyrintti = labyrintti;
     }
-
+    /*
+     * Dijkstran algoritmi, joka palauttaa Arraylistin parhaasta löydetystä reitistä
+     */
     public ArrayList dijkstra() {
 
         // Laitetaan talteen jokaista labyrintin kohtaa vastaava koordinaatti-olio
@@ -39,7 +41,9 @@ public class LabyrinttiSolver {
 
         return null;
     }
-
+    /*
+     * Etsii parametrina saadusta koordinaatti-taulukosta aloituskohdas, eli koordinaatin, jonka merkki on 'A'
+     */
     public Koordinaatti aloituksenEtsinta(Koordinaatti[][] koordinaatit) {
         for (int i = 0; i < koordinaatit.length; i++) {
             for (int j = 0; j < koordinaatit.length; j++) {
@@ -51,6 +55,10 @@ public class LabyrinttiSolver {
         return null;
     }
 
+    /*
+     * Alustaa koordinaatit char-labyrintin mukaan, josta koordinaatille asetetaan koordinaatit (ei tarvitse ja poistetaan), painoarvo ja merkki. HUOM. tämä on tässä vaiheessa todella typerä ratkaisu
+     *
+     */
     public void koordinaattienAlustus(Koordinaatti[][] koordinaatit) {
         for (int i = 0; i < koordinaatit.length; i++) {
             for (int j = 0; j < koordinaatit[0].length; j++) {
@@ -67,6 +75,9 @@ public class LabyrinttiSolver {
         }
     }
 
+    /*
+     * "Relaksoi" eli päivittää solmun (koordinaatin) painoarvon
+     */
     private void relaksoi(Labyrintti labyrintti, PriorityQueue<Koordinaatti> valekeko, Koordinaatti[][] koordinaatit, Koordinaatti p, int x, int y) {
 
         if (x < 0 || y < 0 || x >= koordinaatit[0].length || y >= koordinaatit.length) {
@@ -85,6 +96,9 @@ public class LabyrinttiSolver {
         }
     }
 
+    /*
+     * relaksoi kaikki koordinaatin vierukset, eli suorittaa leveyssuuntaisen haun.
+     */
     private void relaksoiKaikkiVierukset(Koordinaatti p, Koordinaatti[][] koordinaatit, PriorityQueue valekeko) {
 
         relaksoi(labyrintti, valekeko, koordinaatit, p, p.getX() - 1, p.getY());

@@ -10,6 +10,9 @@
 public class Labyrintti {
     private char[][] labyrintti;
 
+    /*
+     * Kovakoodataan tylsä char-labyrintti
+     */
     public Labyrintti(){
         labyrintti = new char[][] {
         {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},

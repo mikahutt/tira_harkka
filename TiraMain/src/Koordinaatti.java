@@ -11,7 +11,7 @@ public class Koordinaatti {
 
     private final int x;
     private final int y;
-    private final int painoarvo;
+    private int painoarvo;
     private final char merkki;
 
     public int getPainoarvo() {
@@ -28,6 +28,10 @@ public class Koordinaatti {
         return merkki;
     }
 
+    public void setPainoarvo(int painoarvo) {
+        this.painoarvo = painoarvo;
+    }
+
  
 
     public int getY() {
@@ -35,7 +39,9 @@ public class Koordinaatti {
     }
 
 
-
+    /*
+     * Luodaan koordinaatti, jolla on painoarvo
+     */
     public Koordinaatti(int x, int y, int painoarvo, char merkki) {
         this.x = x;
         this.y = y;
