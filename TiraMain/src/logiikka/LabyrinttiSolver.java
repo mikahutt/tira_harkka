@@ -86,9 +86,9 @@ public class LabyrinttiSolver {
      * 
      * "Relaksoi" eli päivittää solmun (koordinaatin) painoarvon
      */
-    private void relaksoi(Labyrintti labyrintti, PriorityQueue<Koordinaatti> valekeko, Koordinaatti[][] koordinaatit, Koordinaatti p, int x, int y) {
+    public void relaksoi(PriorityQueue<Koordinaatti> valekeko, Koordinaatti[][] koordinaatit, Koordinaatti p, int x, int y) {
 
-        if (onkoKelpoSeuraaja(x, y,p.isKayty(), koordinaatit)) {
+        if (onkoEpaKelpoSeuraaja(x, y,p.isKayty(), koordinaatit)) {
             return;
         }
 
@@ -104,7 +104,7 @@ public class LabyrinttiSolver {
         }
     }
 
-    private boolean onkoKelpoSeuraaja(int x, int y, boolean kayty, Koordinaatti[][] koordinaatit) {
+    public boolean onkoEpaKelpoSeuraaja(int x, int y, boolean kayty, Koordinaatti[][] koordinaatit) {
         return x < 0 || y < 0 || x >= koordinaatit[0].length || y >= koordinaatit.length || kayty;
     }
 
@@ -114,10 +114,10 @@ public class LabyrinttiSolver {
      */
     private void relaksoiKaikkiVierukset(Koordinaatti p, Koordinaatti[][] koordinaatit, PriorityQueue valekeko) {
 
-        relaksoi(labyrintti, valekeko, koordinaatit, p, p.getX() - 1, p.getY());
-        relaksoi(labyrintti, valekeko, koordinaatit, p, p.getX() + 1, p.getY());
-        relaksoi(labyrintti, valekeko, koordinaatit, p, p.getX(), p.getY() - 1);
-        relaksoi(labyrintti, valekeko, koordinaatit, p, p.getX(), p.getY() + 1);
+        relaksoi(valekeko, koordinaatit, p, p.getX() - 1, p.getY());
+        relaksoi(valekeko, koordinaatit, p, p.getX() + 1, p.getY());
+        relaksoi(valekeko, koordinaatit, p, p.getX(), p.getY() - 1);
+        relaksoi(valekeko, koordinaatit, p, p.getX(), p.getY() + 1);
         p.setKayty(true);
     }
 }

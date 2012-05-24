@@ -12,7 +12,7 @@ import java.util.Comparator;
  *
  * @author MH
  */
-class KoordinaattiComparator implements Comparator<Koordinaatti>{
+public class KoordinaattiComparator implements Comparator<Koordinaatti>{
 
     public KoordinaattiComparator() {
     }

@@ -3,8 +3,10 @@
  * and open the template in the editor.
  */
 
+import java.util.PriorityQueue;
 import logiikka.LabyrinttiSolver;
 import logiikka.Koordinaatti;
+import logiikka.KoordinaattiComparator;
 import logiikka.Labyrintti;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -37,6 +39,7 @@ public class LabyrinttiSolverTest {
         Labyrintti laby = new Labyrintti();
         solveri = new LabyrinttiSolver(laby);
         koordinaatit = new Koordinaatti[laby.labyrintinKorkeus()][laby.labyrintinLeveys()];
+        solveri.koordinaattienAlustus(koordinaatit);
     }
 
     @After
@@ -45,20 +48,35 @@ public class LabyrinttiSolverTest {
     
     @Test
     public void koordinaattienAlustuksenAloituspaikkaToimii() {
-        solveri.koordinaattienAlustus(koordinaatit);
         assertTrue(koordinaatit[1][1].getMerkki() == 'A');
     }
     
     @Test
     public void koordinaattienAlustuksenLopetuspaikkaToimii() {
-        solveri.koordinaattienAlustus(koordinaatit);
         assertTrue(koordinaatit[4][8].getMerkki() == 'L');
     }
     
     @Test
     public void aloituksenEtsintaToimii() {
-        solveri.koordinaattienAlustus(koordinaatit);
         assertTrue(solveri.aloituksenEtsinta(koordinaatit).equals(koordinaatit[1][1]));
+    }
+    
+    @Test
+    public void onkoEpaKelpoSeuraajaToimii() {
+        assertFalse(solveri.onkoEpaKelpoSeuraaja(2, 3, false, koordinaatit));
+        assertTrue(solveri.onkoEpaKelpoSeuraaja(2, 5, true, koordinaatit));
+        assertTrue(solveri.onkoEpaKelpoSeuraaja(-1, 5, false, koordinaatit));
+        assertTrue(solveri.onkoEpaKelpoSeuraaja(2, 115, true, koordinaatit));
+    }
+    
+    @Test
+    public void relaksoidaanJoKaytya() {
+        koordinaatit[3][3].setKayty(true);
+        int painoarvo = koordinaatit[3][3].getPainoarvo();
+        PriorityQueue<Koordinaatti> valekeko = new PriorityQueue<Koordinaatti>(1, new KoordinaattiComparator());
+        Koordinaatti naatti = koordinaatit[1][1];
+        solveri.relaksoi(valekeko, koordinaatit,naatti , 3, 3);
+        assertTrue(koordinaatit[3][3].getPainoarvo() < painoarvo);
     }
 
     
