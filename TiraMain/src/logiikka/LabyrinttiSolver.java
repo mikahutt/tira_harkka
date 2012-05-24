@@ -15,9 +15,10 @@ public class LabyrinttiSolver {
     }
     /**
      * 
-     * Dijkstran algoritmi, joka palauttaa Arraylistin parhaasta löydetystä reitistä
+     * Dijkstran algoritmi, joka palauttaa tällä hetkellä tiedon siitä, kuinka monta askelta kesti kulkea aloituksesta lopetukseen
+     * @return 
      */
-    public ArrayList dijkstra() {
+    public int dijkstra() {
 
         // Laitetaan talteen jokaista labyrintin kohtaa vastaava koordinaatti-olio
         Koordinaatti[][] koordinaatit = new Koordinaatti[labyrintti.labyrintinKorkeus()][labyrintti.labyrintinLeveys()];
@@ -28,19 +29,25 @@ public class LabyrinttiSolver {
         Koordinaatti aloitus = aloituksenEtsinta(koordinaatit);
         
         valekeko.add(aloitus);
-      
+        int montaLiikkumista = 0;
         while (!valekeko.isEmpty()) {
+            montaLiikkumista++;
             Koordinaatti p = valekeko.poll();
+            if (p.getMerkki() == 'L') {
+                break;
+            }
             relaksoiKaikkiVierukset(p, koordinaatit, valekeko);
 
         }
 
 
-        return null;
+        return montaLiikkumista;
     }
     /**
      * 
      * Etsii parametrina saadusta koordinaatti-taulukosta aloituskohdas, eli koordinaatin, jonka merkki on 'A'
+     * @param koordinaatit
+     * @return  
      */
     public Koordinaatti aloituksenEtsinta(Koordinaatti[][] koordinaatit) {
         for (int i = 0; i < koordinaatit.length; i++) {
@@ -57,18 +64,19 @@ public class LabyrinttiSolver {
      * 
      * Alustaa koordinaatit char-labyrintin mukaan, josta koordinaatille asetetaan koordinaatit (ei tarvitse ja poistetaan), painoarvo ja merkki. HUOM. tämä on tässä vaiheessa todella typerä ratkaisu
      *
+     * @param koordinaatit 
      */
     public void koordinaattienAlustus(Koordinaatti[][] koordinaatit) {
         for (int i = 0; i < koordinaatit.length; i++) {
             for (int j = 0; j < koordinaatit[0].length; j++) {
                 if (labyrintti.getLabyrintti()[i][j] == '#') {
-                    koordinaatit[i][j] = new Koordinaatti(i, j, 1000, '#');
+                    koordinaatit[i][j] = new Koordinaatti(i, j, 100000, '#');
                 } else if (labyrintti.getLabyrintti()[i][j] == 'A') {
                     koordinaatit[i][j] = new Koordinaatti(i, j, 0, 'A');
                 } else if (labyrintti.getLabyrintti()[i][j] == 'L') {
                     koordinaatit[i][j] = new Koordinaatti(i, j, 0, 'L');
                 } else {
-                    koordinaatit[i][j] = new Koordinaatti(i, j, 1, '.');
+                    koordinaatit[i][j] = new Koordinaatti(i, j, 1000, '.');
                 }
             }
         }
@@ -80,20 +88,24 @@ public class LabyrinttiSolver {
      */
     private void relaksoi(Labyrintti labyrintti, PriorityQueue<Koordinaatti> valekeko, Koordinaatti[][] koordinaatit, Koordinaatti p, int x, int y) {
 
-        if (x < 0 || y < 0 || x >= koordinaatit[0].length || y >= koordinaatit.length) {
+        if (onkoKelpoSeuraaja(x, y,p.isKayty(), koordinaatit)) {
             return;
         }
 
-        int uusiE = p.getPainoarvo() + Math.abs(labyrintti.getLabyrintti()[p.getY()][p.getX()] - labyrintti.getLabyrintti()[y][x]);
+        int uusiE = p.getPainoarvo() + 1;
 
 
         int vanhaE = koordinaatit[y][x].getPainoarvo();
         if (uusiE < vanhaE) {
             char valiaikainen = koordinaatit[y][x].getMerkki();
-            valekeko.remove(koordinaatit[y][x]);
+            valekeko.remove(p);
             koordinaatit[y][x] = new Koordinaatti(x, y, uusiE, valiaikainen);
             valekeko.add(koordinaatit[y][x]);
         }
+    }
+
+    private boolean onkoKelpoSeuraaja(int x, int y, boolean kayty, Koordinaatti[][] koordinaatit) {
+        return x < 0 || y < 0 || x >= koordinaatit[0].length || y >= koordinaatit.length || kayty;
     }
 
     /**
@@ -106,5 +118,6 @@ public class LabyrinttiSolver {
         relaksoi(labyrintti, valekeko, koordinaatit, p, p.getX() + 1, p.getY());
         relaksoi(labyrintti, valekeko, koordinaatit, p, p.getX(), p.getY() - 1);
         relaksoi(labyrintti, valekeko, koordinaatit, p, p.getX(), p.getY() + 1);
+        p.setKayty(true);
     }
 }

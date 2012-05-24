@@ -54,6 +54,12 @@ public class LabyrinttiSolverTest {
         solveri.koordinaattienAlustus(koordinaatit);
         assertTrue(koordinaatit[4][8].getMerkki() == 'L');
     }
+    
+    @Test
+    public void aloituksenEtsintaToimii() {
+        solveri.koordinaattienAlustus(koordinaatit);
+        assertTrue(solveri.aloituksenEtsinta(koordinaatit).equals(koordinaatit[1][1]));
+    }
 
     
 
