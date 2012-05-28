@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  * @author MH
  */
 public class KoordinaattiTest {
-    Koordinaatti koordinaatti;
-    Koordinaatti koordinaatti2;
-    Koordinaatti koordinaatti3;
+    private Koordinaatti koordinaatti;
+    private Koordinaatti koordinaatti2;
+    private Koordinaatti koordinaatti3;
 
     public KoordinaattiTest() {
     }

@@ -7,7 +7,7 @@ package logiikka;
 
 /**
  *
- * @author MH
+ * Luokka pitää sisällään koordinaatteihin liittyvää dataa.
  */
 public class Koordinaatti {
 
@@ -16,6 +16,23 @@ public class Koordinaatti {
     private int painoarvo;
     private final char merkki;
     private boolean kayty;
+    
+    
+    /*
+     * Luodaan koordinaatti, jolla on painoarvo ja labyrintin paikkaa vastaava merkki
+     */
+        public Koordinaatti(int x, int y, int painoarvo, char merkki) {
+        this.x = x;
+        this.y = y;
+        kayty = false;
+        this.merkki = merkki;
+        if (painoarvo < 0) {
+            this.painoarvo = 0;
+        } else {
+            this.painoarvo = painoarvo;
+        }
+    }
+            
     public boolean isKayty() {
         return kayty;
     }
@@ -50,18 +67,5 @@ public class Koordinaatti {
     }
 
 
-    /*
-     * Luodaan koordinaatti, jolla on painoarvo
-     */
-    public Koordinaatti(int x, int y, int painoarvo, char merkki) {
-        this.x = x;
-        this.y = y;
-        kayty = false;
-        this.merkki = merkki;
-        if (painoarvo < 0) {
-            this.painoarvo = 0;
-        } else {
-            this.painoarvo = painoarvo;
-        }
-    }
+ 
 }

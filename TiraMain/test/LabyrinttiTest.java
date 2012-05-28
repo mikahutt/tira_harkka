@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 
+import logiikka.Labyrintti;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,6 +16,7 @@ import static org.junit.Assert.*;
  * @author MH
  */
 public class LabyrinttiTest {
+    private Labyrintti labyrintti;
 
     public LabyrinttiTest() {
     }
@@ -29,10 +31,16 @@ public class LabyrinttiTest {
 
     @Before
     public void setUp() {
+        labyrintti = new Labyrintti();
     }
 
     @After
     public void tearDown() {
+    }
+    
+    @Test
+    public void leveysJaPituusOikeinPain() {
+        assertTrue(labyrintti.labyrintinKorkeus() == 5 && labyrintti.labyrintinLeveys() == 10);
     }
 
     // TODO add test methods here.

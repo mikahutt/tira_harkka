@@ -10,7 +10,7 @@ import java.util.Comparator;
 
 /**
  *
- * @author MH
+ * Luokka määrittelee koordinaattien välisen järjestyksen niiden painoarvon mukaan
  */
 public class KoordinaattiComparator implements Comparator<Koordinaatti>{
 

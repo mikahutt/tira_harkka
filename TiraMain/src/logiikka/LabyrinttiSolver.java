@@ -31,12 +31,14 @@ public class LabyrinttiSolver {
         valekeko.add(aloitus);
         int montaLiikkumista = 0;
         while (!valekeko.isEmpty()) {
-            montaLiikkumista++;
+            
             Koordinaatti p = valekeko.poll();
             if (p.getMerkki() == 'L') {
+                montaLiikkumista = -5;
                 break;
             }
             relaksoiKaikkiVierukset(p, koordinaatit, valekeko);
+            montaLiikkumista++;
 
         }
 
@@ -98,7 +100,6 @@ public class LabyrinttiSolver {
         int vanhaE = koordinaatit[y][x].getPainoarvo();
         if (uusiE < vanhaE) {
             char valiaikainen = koordinaatit[y][x].getMerkki();
-            valekeko.remove(p);
             koordinaatit[y][x] = new Koordinaatti(x, y, uusiE, valiaikainen);
             valekeko.add(koordinaatit[y][x]);
         }

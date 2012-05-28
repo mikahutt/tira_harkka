@@ -20,8 +20,8 @@ import static org.junit.Assert.*;
  * @author MH
  */
 public class LabyrinttiSolverTest {
-    LabyrinttiSolver solveri;
-    Koordinaatti[][] koordinaatit;
+    private LabyrinttiSolver solveri;
+    private Koordinaatti[][] koordinaatit;
 
     public LabyrinttiSolverTest() {
     }
@@ -52,6 +52,11 @@ public class LabyrinttiSolverTest {
     }
     
     @Test
+    public void koordinaattienAlustusJaAloituksenPainoarvo() {
+        assertTrue(koordinaatit[1][1].getPainoarvo() == 0);
+    }
+    
+    @Test
     public void koordinaattienAlustuksenLopetuspaikkaToimii() {
         assertTrue(koordinaatit[4][8].getMerkki() == 'L');
     }
@@ -69,16 +74,26 @@ public class LabyrinttiSolverTest {
         assertTrue(solveri.onkoEpaKelpoSeuraaja(2, 115, true, koordinaatit));
     }
     
+    /**
+     * Tässä päivitetään koordinaatti-taulukon koordinaattia (3,3). Koska oikeanlaiset kutsut hoidetaan 
+     * dijkstran-algoritmin sisällä, niin tässä testissä voidaan asettaa (1,1) olemaan koordinaatin (3,3) vierus.
+     * Silloin päivitetyksi arvoksi tulee 0+1 joka on aloituksen painoarvo plus liikkuminen.
+     */
+    
     @Test
-    public void relaksoidaanJoKaytya() {
-        koordinaatit[3][3].setKayty(true);
+    public void relaksoidaanJotainKoordinaattia() {
         int painoarvo = koordinaatit[3][3].getPainoarvo();
         PriorityQueue<Koordinaatti> valekeko = new PriorityQueue<Koordinaatti>(1, new KoordinaattiComparator());
         Koordinaatti naatti = koordinaatit[1][1];
         solveri.relaksoi(valekeko, koordinaatit,naatti , 3, 3);
         assertTrue(koordinaatit[3][3].getPainoarvo() < painoarvo);
+        assertTrue(koordinaatit[3][3].getPainoarvo() == 1);
     }
 
+//    @Test
+//    public void dijkstranAlgoritmiPalauttaaJotainJarkevaa() {
+//        assertTrue("ois ollu: " + solveri.dijkstra(),solveri.dijkstra() == 10);
+//    }
     
 
 }
