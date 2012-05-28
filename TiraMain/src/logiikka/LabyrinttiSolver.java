@@ -31,14 +31,13 @@ public class LabyrinttiSolver {
         valekeko.add(aloitus);
         int montaLiikkumista = 0;
         while (!valekeko.isEmpty()) {
-            
+            montaLiikkumista++;
             Koordinaatti p = valekeko.poll();
             if (p.getMerkki() == 'L') {
-                montaLiikkumista = -5;
                 break;
             }
             relaksoiKaikkiVierukset(p, koordinaatit, valekeko);
-            montaLiikkumista++;
+            
 
         }
 
@@ -114,11 +113,18 @@ public class LabyrinttiSolver {
      * relaksoi kaikki koordinaatin vierukset, eli suorittaa leveyssuuntaisen haun.
      */
     private void relaksoiKaikkiVierukset(Koordinaatti p, Koordinaatti[][] koordinaatit, PriorityQueue valekeko) {
-
-        relaksoi(valekeko, koordinaatit, p, p.getX() - 1, p.getY());
-        relaksoi(valekeko, koordinaatit, p, p.getX() + 1, p.getY());
-        relaksoi(valekeko, koordinaatit, p, p.getX(), p.getY() - 1);
-        relaksoi(valekeko, koordinaatit, p, p.getX(), p.getY() + 1);
+        if (!seina(koordinaatit,p.getX() - 1, p.getY()))
+            relaksoi(valekeko, koordinaatit, p, p.getX() - 1, p.getY());
+        if (!seina(koordinaatit,p.getX() + 1, p.getY()))
+            relaksoi(valekeko, koordinaatit, p, p.getX() + 1, p.getY());
+        if (!seina(koordinaatit,p.getX(), p.getY()-1))
+            relaksoi(valekeko, koordinaatit, p, p.getX(), p.getY() - 1);
+        if (!seina(koordinaatit,p.getX(), p.getY()+1))
+            relaksoi(valekeko, koordinaatit, p, p.getX(), p.getY() + 1);
         p.setKayty(true);
+    }
+
+    private boolean seina(Koordinaatti[][] koordinaatit,int x, int y) {
+        return koordinaatit[x][y].getMerkki() == '#'; 
     }
 }

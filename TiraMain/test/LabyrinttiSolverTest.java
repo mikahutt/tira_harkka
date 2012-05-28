@@ -90,10 +90,10 @@ public class LabyrinttiSolverTest {
         assertTrue(koordinaatit[3][3].getPainoarvo() == 1);
     }
 
-//    @Test
-//    public void dijkstranAlgoritmiPalauttaaJotainJarkevaa() {
-//        assertTrue("ois ollu: " + solveri.dijkstra(),solveri.dijkstra() == 10);
-//    }
+    @Test
+    public void dijkstranAlgoritmiPalauttaaJotainJarkevaa() {
+        assertTrue("ois ollu: " + solveri.dijkstra(),solveri.dijkstra() == 10);
+    }
     
 
 }

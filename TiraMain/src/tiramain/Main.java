@@ -5,6 +5,9 @@
 
 package tiramain;
 
+import logiikka.Labyrintti;
+import logiikka.LabyrinttiSolver;
+
 /**
  *
  * @author MH
@@ -15,7 +18,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Labyrintti laby = new Labyrintti();
+        LabyrinttiSolver solveri = new LabyrinttiSolver(laby);
+        System.out.println(solveri.dijkstra());
     }
 
 }
