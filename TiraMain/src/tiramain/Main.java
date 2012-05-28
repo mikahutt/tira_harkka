@@ -5,6 +5,7 @@
 
 package tiramain;
 
+import logiikka.Koordinaatti;
 import logiikka.Labyrintti;
 import logiikka.LabyrinttiSolver;
 
@@ -20,7 +21,16 @@ public class Main {
     public static void main(String[] args) {
         Labyrintti laby = new Labyrintti();
         LabyrinttiSolver solveri = new LabyrinttiSolver(laby);
-        System.out.println(solveri.dijkstra());
+//        Koordinaatti[][] naatit = solveri.dijkstra();
+        
+//        for (Koordinaatti[] koordinaattis : naatit) {
+//            for (Koordinaatti koordinaatti : koordinaattis) {
+//                System.out.print(koordinaatti.getPainoarvo() + ",");
+//            }
+//            System.out.println("");
+//            }
+//            
+        }
     }
 
-}
+

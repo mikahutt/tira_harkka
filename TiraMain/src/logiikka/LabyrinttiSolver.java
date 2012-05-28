@@ -31,9 +31,10 @@ public class LabyrinttiSolver {
         valekeko.add(aloitus);
         int montaLiikkumista = 0;
         while (!valekeko.isEmpty()) {
-            montaLiikkumista++;
+           // montaLiikkumista++;
             Koordinaatti p = valekeko.poll();
             if (p.getMerkki() == 'L') {
+                montaLiikkumista = p.getPainoarvo();
                 break;
             }
             relaksoiKaikkiVierukset(p, koordinaatit, valekeko);
@@ -75,7 +76,7 @@ public class LabyrinttiSolver {
                 } else if (labyrintti.getLabyrintti()[i][j] == 'A') {
                     koordinaatit[i][j] = new Koordinaatti(i, j, 0, 'A');
                 } else if (labyrintti.getLabyrintti()[i][j] == 'L') {
-                    koordinaatit[i][j] = new Koordinaatti(i, j, 0, 'L');
+                    koordinaatit[i][j] = new Koordinaatti(i, j, 10000000, 'L');
                 } else {
                     koordinaatit[i][j] = new Koordinaatti(i, j, 1000, '.');
                 }
@@ -125,6 +126,6 @@ public class LabyrinttiSolver {
     }
 
     private boolean seina(Koordinaatti[][] koordinaatit,int x, int y) {
-        return koordinaatit[x][y].getMerkki() == '#'; 
+        return koordinaatit[y][x].getMerkki() == '#'; 
     }
 }
