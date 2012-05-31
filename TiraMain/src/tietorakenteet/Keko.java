@@ -36,7 +36,7 @@ public class Keko {
      * @return 
      */
     public Koordinaatti heapMin() {
-        return keonSisalto[0];
+        return keonSisalto[1];
     }
     /**
      * Palauttaa ja poistaa keon pienimmän alkion.
@@ -44,8 +44,9 @@ public class Keko {
      */
     public Koordinaatti heapDelMin() {
         Koordinaatti min = this.heapMin();
-        keonSisalto[0] = keonSisalto[this.heapSize()];
-        heapify(0);
+        keonSisalto[1] = keonSisalto[this.heapSize()];
+        keonSisalto[this.heapSize()] = null;
+        heapify(1);
         return min;
     }
 
@@ -68,10 +69,10 @@ public class Keko {
             return this.length();
         }
         int koko = 0;
-        Koordinaatti eka = keonSisalto[0];
+        Koordinaatti eka = keonSisalto[1];
         while (eka != null) {
             koko++;
-            eka = keonSisalto[koko];
+            eka = keonSisalto[koko+1];
         }
         return koko;
 
