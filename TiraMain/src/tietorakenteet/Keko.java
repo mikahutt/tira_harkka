@@ -24,13 +24,29 @@ public class Keko {
     }
 
     public void heapInsert(Koordinaatti k) {
+        int i = this.heapSize()+1;
+        while (i > 1 && this.parent(i).getPainoarvo() > k.getPainoarvo()) {
+            keonSisalto[i] = keonSisalto[i/2];
+            i = (i/2);
+        }
+        keonSisalto[i] = k;
     }
-
+    /**
+     * Palauttaa keon pienimmän alkion
+     * @return 
+     */
     public Koordinaatti heapMin() {
-        return null;
+        return keonSisalto[0];
     }
-
-    public void heapDelMin() {
+    /**
+     * Palauttaa ja poistaa keon pienimmän alkion.
+     * @return 
+     */
+    public Koordinaatti heapDelMin() {
+        Koordinaatti min = this.heapMin();
+        keonSisalto[0] = keonSisalto[this.heapSize()];
+        heapify(0);
+        return min;
     }
 
     /**
@@ -60,11 +76,12 @@ public class Keko {
         return koko;
 
     }
-    
+
     /**
      * Palauttaa keon alkion vanhemman
+     *
      * @param i
-     * @return 
+     * @return
      */
     public Koordinaatti parent(int i) {
         if (i == 0 || i > this.heapSize() * 2) {
@@ -72,10 +89,12 @@ public class Keko {
         }
         return keonSisalto[i / 2];
     }
+
     /**
      * Palauttaa keon alkion vasemman lapsen
+     *
      * @param i
-     * @return 
+     * @return
      */
     public Koordinaatti left(int i) {
         if (i > (this.heapSize() / 2)) {
@@ -83,15 +102,50 @@ public class Keko {
         }
         return keonSisalto[i * 2];
     }
+
     /**
      * Palauttaa keon alkion oikean lapsen
+     *
      * @param i
-     * @return 
+     * @return
      */
     public Koordinaatti right(int i) {
         if (i > (this.heapSize() / 2)) {
             return null;
         }
         return keonSisalto[i * 2 + 1];
+    }
+
+    /**
+     * Metodi heapify pitää keko-ehdon voimassa
+     *
+     * @param i
+     */
+    public void heapify(int i) {
+        Koordinaatti vasen = this.left(i);
+        Koordinaatti oikea = this.right(i);
+        Koordinaatti pienin;
+        int pienimmanIndeksi;
+        if (oikea != null) {
+            if (vasen.getPainoarvo() < oikea.getPainoarvo()) {
+                pienin = vasen;
+                pienimmanIndeksi = i * 2;
+            } else {
+                pienin = oikea;
+                pienimmanIndeksi = i * 2 + 1;
+            }
+            if (keonSisalto[i].getPainoarvo() > pienin.getPainoarvo()) {
+                this.vaihda(i, pienimmanIndeksi);
+                this.heapify(pienimmanIndeksi);
+            }
+        } else if (i * 2 == this.heapSize() && keonSisalto[i].getPainoarvo() > vasen.getPainoarvo()) {
+            this.vaihda(i, i * 2);
+        }
+    }
+
+    private void vaihda(int i, int j) {
+        Koordinaatti talteen = keonSisalto[i];
+        keonSisalto[i] = keonSisalto[j];
+        keonSisalto[j] = talteen;
     }
 }
