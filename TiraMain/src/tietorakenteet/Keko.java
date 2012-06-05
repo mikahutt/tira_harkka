@@ -19,6 +19,14 @@ public class Keko {
      */
     private Koordinaatti[] keonSisalto;
 
+    public Koordinaatti[] getKeonSisalto() {
+        return keonSisalto;
+    }
+
+    public void setKeonSisalto(Koordinaatti[] keonSisalto) {
+        this.keonSisalto = keonSisalto;
+    }
+
     public Keko() {
         keonSisalto = new Koordinaatti[100];
     }
