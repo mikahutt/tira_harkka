@@ -40,12 +40,13 @@ public class KeonTaulukko {
      * @param i 
      */
     public void lisaa(Koordinaatti k, int i) {
-        if (i >= this.taulukonKoko() || i < 1) {
-            return;
-        }
+       
         if (kuinkaMontaMahtuu() == 0) {
             Koordinaatti[] kopio = new Koordinaatti[taulukonKoko() * 2];
-            System.arraycopy(taulukko, 1, kopio, 1, kopio.length-1);
+            for (int j = 0; j < taulukko.length; j++) {
+                kopio[j] = taulukko[j];
+                
+            }
             taulukko = kopio;   
         }
         taulukko[i] = k;
@@ -59,9 +60,9 @@ public class KeonTaulukko {
         return taulukko.length;
     }
 
-    private int kuinkaMontaMahtuu() {
+    public int kuinkaMontaMahtuu() {
         int maara = 0;
-        for (int i = 1; i < taulukko.length; i++) {
+        for (int i = 0; i < taulukko.length; i++) {
             if (taulukko[i] == null) {
                 break;
             }
