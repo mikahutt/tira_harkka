@@ -6,10 +6,7 @@ package logiikka.test;
  */
 
 import java.util.PriorityQueue;
-import logiikka.LabyrinttiSolver;
-import logiikka.Koordinaatti;
-import logiikka.KoordinaattiComparator;
-import logiikka.Labyrintti;
+import logiikka.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -40,6 +37,8 @@ public class LabyrinttiSolverTest {
     @Before
     public void setUp() {
         Labyrintti laby = new Labyrintti();
+        //Bittikartta mappi = new Bittikartta("ekaLaby.tif");
+        //Labyrintti laby = new Labyrintti(mappi.getLabyrintti());
         solveri = new LabyrinttiSolver(laby);
         koordinaatit = new Koordinaatti[laby.labyrintinKorkeus()][laby.labyrintinLeveys()];
         solveri.koordinaattienAlustus(koordinaatit);
@@ -49,10 +48,32 @@ public class LabyrinttiSolverTest {
     public void tearDown() {
     }
     
+//    @Test
+//    public void keltanenOnKeltasta(){
+//        for (int i = 0; i < koordinaatit.length; i++) {
+//            for (int j = 0; j < koordinaatit[0].length; j++) {
+//                assertTrue(koordinaatit[j][i].getMerkki() == 'A');
+//                
+//            }
+//            
+//        }
+//    }
+    
+//    @Test
+//    public void oikeenKokoinenLabyrintti() {
+//        assertTrue("Oli oikeesti" + koordinaatit.length,koordinaatit.length == 318);
+//        assertTrue("Oli oikeesti" + koordinaatit[0].length,koordinaatit[0].length == 436);
+//    }
+    
     @Test
     public void koordinaattienAlustuksenAloituspaikkaToimii() {
-        assertTrue(koordinaatit[1][1].getMerkki() == 'A');
+        assertTrue("Oli oikeesti: " + koordinaatit[1][1].getMerkki(),koordinaatit[1][1].getMerkki() == 'A');
     }
+    
+//    @Test
+//    public void mustaOnRisuaitaa() {
+//        assertEquals('#', koordinaatit[31][31].getMerkki());
+//    }
     
     @Test
     public void koordinaattienAlustusJaAloituksenPainoarvo() {

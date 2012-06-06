@@ -20,7 +20,7 @@ public class Bittikartta {
 
     final static int MUSTA = -16777216;
     final static int VALKEA = -1;
-    final static int LAHTO = -256;
+    final static int LAHTO = -3584;
     final static int MAALI = -65536;
     private char[][] labyrintti;
     private int korkeus;
@@ -60,6 +60,10 @@ public class Bittikartta {
         for (int j = 0; j < korkeus; j++) {
             for (int i = 0; i < leveys; i++) {
                 int pikseli = kuva.getRGB(i, j);
+                
+                if (pikseli != MUSTA && pikseli != VALKEA) {
+                    System.out.println(pikseli);
+                }
                 
                 if (pikseli == VALKEA) {
                     labyrintti[j][i] = '.';
