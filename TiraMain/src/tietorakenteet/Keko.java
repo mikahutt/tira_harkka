@@ -18,6 +18,7 @@ public class Keko {
      * myöhemmin tehdään tuplaava taulukko. Alussa minimikeko.
      */
     private Koordinaatti[] keonSisalto;
+    private int hiipinKoko;
 
     public Koordinaatti[] getKeonSisalto() {
         return keonSisalto;
@@ -28,33 +29,42 @@ public class Keko {
     }
 
     public Keko() {
-        keonSisalto = new Koordinaatti[100];
+        keonSisalto = new Koordinaatti[2000001];
+        hiipinKoko = 0;
     }
 
     public void heapInsert(Koordinaatti k) {
-        int i = this.heapSize()+1;
+        int i = heapSize() + 1;
         while (i > 1 && this.parent(i).getPainoarvo() > k.getPainoarvo()) {
-            keonSisalto[i] = keonSisalto[i/2];
-            i = (i/2);
+            keonSisalto[i] = keonSisalto[i / 2];
+            i = (i / 2);
         }
         keonSisalto[i] = k;
+        hiipinKoko++;
     }
+
     /**
      * Palauttaa keon pienimmän alkion
-     * @return 
+     *
+     * @return
      */
     public Koordinaatti heapMin() {
         return keonSisalto[1];
     }
+
     /**
      * Palauttaa ja poistaa keon pienimmän alkion.
-     * @return 
+     *
+     * @return
      */
     public Koordinaatti heapDelMin() {
         Koordinaatti min = this.heapMin();
-        keonSisalto[1] = keonSisalto[this.heapSize()];
-        keonSisalto[this.heapSize()] = null;
+        keonSisalto[1] = keonSisalto[heapSize()];
+        keonSisalto[heapSize()] = null;
+        hiipinKoko--;
+
         heapify(1);
+
         return min;
     }
 
@@ -73,16 +83,7 @@ public class Keko {
      * @return
      */
     public int heapSize() {
-        if (keonSisalto[this.length() - 1] != null) {
-            return this.length();
-        }
-        int koko = 0;
-        Koordinaatti eka = keonSisalto[1];
-        while (eka != null) {
-            koko++;
-            eka = keonSisalto[koko+1];
-        }
-        return koko;
+        return hiipinKoko;
 
     }
 
@@ -93,9 +94,9 @@ public class Keko {
      * @return
      */
     public Koordinaatti parent(int i) {
-        if (i == 0 || i > this.heapSize() * 2) {
-            return null;
-        }
+//        if (i == 0 || i > this.heapSize() * 2) {
+//            return null;
+//        }
         return keonSisalto[i / 2];
     }
 
@@ -131,6 +132,9 @@ public class Keko {
      * @param i
      */
     public void heapify(int i) {
+        if (heapSize() == 1 || i >= this.length()) {
+            return;
+        }
         Koordinaatti vasen = this.left(i);
         Koordinaatti oikea = this.right(i);
         Koordinaatti pienin;
@@ -147,7 +151,7 @@ public class Keko {
                 this.vaihda(i, pienimmanIndeksi);
                 this.heapify(pienimmanIndeksi);
             }
-        } else if (i * 2 == this.heapSize() && keonSisalto[i].getPainoarvo() > vasen.getPainoarvo()) {
+        } else if (i * 2 == heapSize() && keonSisalto[i].getPainoarvo() > vasen.getPainoarvo()) {
             this.vaihda(i, i * 2);
         }
     }

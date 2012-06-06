@@ -36,34 +36,58 @@ public class KeonTaulukkoTest {
     @After
     public void tearDown() {
     }
+    
+    @Test
+    public void parametritonKonstruktori() {
+        assertEquals(100,taulu2.taulukonKoko());
+        assertEquals(100,taulu2.kuinkaMontaMahtuu());
+    }
 
     @Test
     public void tyhjaanTaulukkoonMahtuuOikeaMaara() {
-        assertEquals(300,taulu.kuinkaMontaMahtuu());
+        assertEquals(300, taulu.kuinkaMontaMahtuu());
     }
-    
+
     @Test
     public void puolillaanOlevaanTaulukkoonMahtuuVielaPuolet() {
         for (int i = 0; i < 150; i++) {
-            taulu.lisaa(new Koordinaatti(1,1,1,'d'), i);
+            taulu.lisaa(new Koordinaatti(1, 1, 1, 'd'), i);
         }
-        assertEquals(150,taulu.kuinkaMontaMahtuu());
+        assertEquals(150, taulu.kuinkaMontaMahtuu());
     }
-    
+
     @Test
     public void tayteenTaulukkoonEiMahduEnaa() {
         for (int i = 0; i < 300; i++) {
-            taulu.lisaa(new Koordinaatti(1,1,1,'d'), i);
+            taulu.lisaa(new Koordinaatti(1, 1, 1, 'd'), i);
         }
-        assertEquals(0,taulu.kuinkaMontaMahtuu());
+        assertEquals(0, taulu.kuinkaMontaMahtuu());
     }
-    
-   @Test
+
+    @Test
     public void lisaaminenToimii() {
         for (int i = 0; i < 1000; i++) {
             Koordinaatti k = new Koordinaatti(1, 1, 1, 'k');
             taulu.lisaa(k, i);
         }
         assertEquals(taulu.taulukonKoko(), 1200);
+    }
+
+    @Test
+    public void lisaaminenToimiiRajaArvoilla() {
+        for (int i = 0; i < 1200; i++) {
+            Koordinaatti k = new Koordinaatti(1, 1, 1, 'k');
+            taulu.lisaa(k, i);
+        }
+        assertEquals(taulu.taulukonKoko(), 1200);
+    }
+    
+        @Test
+    public void lisaaminenToimiiRajaArvoaYhtaSuuremmalla() {
+        for (int i = 0; i < 1201; i++) {
+            Koordinaatti k = new Koordinaatti(1, 1, 1, 'k');
+            taulu.lisaa(k, i);
+        }
+        assertEquals(taulu.taulukonKoko(), 2400);
     }
 }
