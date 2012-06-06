@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="MH-PC" name="logiikka.test.LabyrinttiSolverTest" tests="7" time="0.158" timestamp="2012-06-06T07:04:27">
+<testsuite errors="0" failures="0" hostname="MH-PC" name="logiikka.test.LabyrinttiSolverTest" tests="7" time="0.177" timestamp="2012-06-06T11:21:01">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="FI" />
@@ -446,11 +446,11 @@
   </properties>
   <testcase classname="logiikka.test.LabyrinttiSolverTest" name="koordinaattienAlustuksenAloituspaikkaToimii" time="0.0060" />
   <testcase classname="logiikka.test.LabyrinttiSolverTest" name="koordinaattienAlustusJaAloituksenPainoarvo" time="0.0" />
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="koordinaattienAlustuksenLopetuspaikkaToimii" time="0.018" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="koordinaattienAlustuksenLopetuspaikkaToimii" time="0.042" />
   <testcase classname="logiikka.test.LabyrinttiSolverTest" name="aloituksenEtsintaToimii" time="0.0010" />
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="onkoEpaKelpoSeuraajaToimii" time="0.0" />
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="relaksoidaanJotainKoordinaattia" time="0.0030" />
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="dijkstranAlgoritmiPalauttaaJotainJarkevaa" time="0.0" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="onkoEpaKelpoSeuraajaToimii" time="0.0010" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="relaksoidaanJotainKoordinaattia" time="0.0020" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="dijkstranAlgoritmiPalauttaaJotainJarkevaa" time="0.0010" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

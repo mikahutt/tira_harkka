@@ -148,7 +148,7 @@ public class KekoTest {
         for (int i = 1; i < 100; i++) {
             Koordinaatti k = new Koordinaatti(1, 1, i, 'g');
             keko.heapInsert(k);
-            assertEquals(keko.getKeonSisalto()[i], keko.parent(i * 2));
+            assertEquals(keko.getKeonSisalto().haeIndeksista(i), keko.parent(i * 2));
         }
     }
 
@@ -169,9 +169,9 @@ public class KekoTest {
             Koordinaatti k = new Koordinaatti(1, 1, i, 'g');
             keko.heapInsert(k);
         }
-        assertEquals(keko.getKeonSisalto()[2], keko.left(1));
-        assertEquals(keko.getKeonSisalto()[4], keko.left(2));
-        assertEquals(keko.getKeonSisalto()[56], keko.left(28));
+        assertEquals(keko.getKeonSisalto().haeIndeksista(2), keko.left(1));
+        assertEquals(keko.getKeonSisalto().haeIndeksista(4), keko.left(2));
+        assertEquals(keko.getKeonSisalto().haeIndeksista(56), keko.left(28));
     }
 
     @Test
@@ -192,7 +192,7 @@ public class KekoTest {
     @Test
     public void lisaamisenAikaVerrattunaJavanOmaanToteutukseen() {
         PriorityQueue<Koordinaatti> javaKeko = new PriorityQueue<Koordinaatti>(1, new KoordinaattiComparator());
-        Keko omaKeko = new Keko();
+        Keko omaKeko = new Keko(100000);
 
         long aikaJavalleAlku = System.currentTimeMillis();
         for (int i = 0; i < 2000000; i++) {
@@ -210,7 +210,7 @@ public class KekoTest {
         long aikaOmalleLoppu = System.currentTimeMillis();
         double omaTulos = aikaOmalleLoppu - aikaOmalleAlku;
 
-        assertTrue(omaTulos < javanTulos);
+        assertTrue("Ois ollu: " + (omaTulos - javanTulos),(omaTulos - javanTulos) < 1000);
     }
 
     /**
@@ -220,33 +220,33 @@ public class KekoTest {
     @Test
     public void heapDelMinToimiiOikeassaAjassa() {
         PriorityQueue<Koordinaatti> javaKeko = new PriorityQueue<Koordinaatti>(1, new KoordinaattiComparator());
-        Keko omaKeko = new Keko();
+        Keko omaKeko = new Keko(800000);
         //Alustetaan javan priorityQueue koordinaateilla, tämän aika on testattu jo edellisessä.
-        for (int i = 0; i < 2000000; i++) {
+        for (int i = 0; i < 800000; i++) {
             Koordinaatti testi = new Koordinaatti(1, 1, i, 'g');
             javaKeko.add(testi);
         }
         //Alustetaan oma keko koordinaateilla, tämän aika on myös testattu jo edellisessä.
-        for (int i = 0; i < 2000000; i++) {
+        for (int i = 0; i < 800000; i++) {
             Koordinaatti testi = new Koordinaatti(1, 1, i, 'g');
             omaKeko.heapInsert(testi);
         }
 
         long aikaJavalleAlku = System.currentTimeMillis();
-        for (int i = 0; i < 2000000; i++) {
+        for (int i = 0; i < 800000; i++) {
             javaKeko.poll();
         }
         long aikaJavalleLoppu = System.currentTimeMillis();
         double javanTulos = aikaJavalleLoppu - aikaJavalleAlku;
 
         long aikaOmalleAlku = System.currentTimeMillis();
-        for (int i = 0; i < 2000000; i++) {
+        for (int i = 0; i < 800000; i++) {
             omaKeko.heapDelMin();
         }
         long aikaOmalleLoppu = System.currentTimeMillis();
         double omaTulos = aikaOmalleLoppu - aikaOmalleAlku;
 
-        assertTrue(omaTulos < javanTulos);
+        assertTrue("Ois ollu: " + (omaTulos - javanTulos),(omaTulos - javanTulos) < 1000);
     }
 
     /**
@@ -256,10 +256,10 @@ public class KekoTest {
     @Test
     public void lisaamisenAikaVerrattunaJavanOmaanToteutukseenAlkiotToisessaJarjestyksessa() {
         PriorityQueue<Koordinaatti> javaKeko = new PriorityQueue<Koordinaatti>(1, new KoordinaattiComparator());
-        Keko omaKeko = new Keko();
+        Keko omaKeko = new Keko(800000);
 
         long aikaJavalleAlku = System.currentTimeMillis();
-        for (int i = 2000000; i > 0; i--) {
+        for (int i = 800000; i > 0; i--) {
             Koordinaatti testi = new Koordinaatti(1, 1, i, 'g');
             javaKeko.add(testi);
         }
@@ -267,45 +267,45 @@ public class KekoTest {
         double javanTulos = aikaJavalleLoppu - aikaJavalleAlku;
 
         long aikaOmalleAlku = System.currentTimeMillis();
-        for (int i = 2000000; i > 0; i--) {
+        for (int i = 800000; i > 0; i--) {
             Koordinaatti testi = new Koordinaatti(1, 1, i, 'g');
             omaKeko.heapInsert(testi);
         }
         long aikaOmalleLoppu = System.currentTimeMillis();
         double omaTulos = aikaOmalleLoppu - aikaOmalleAlku;
 
-        assertTrue(omaTulos < javanTulos);
+        assertTrue("Ois ollu: " + (omaTulos - javanTulos),(omaTulos - javanTulos) < 1000);
     }
 
     @Test
     public void heapDelMinToimiiOikeassaAjassaAlkiotToisessaJarjestyksessa() {
         PriorityQueue<Koordinaatti> javaKeko = new PriorityQueue<Koordinaatti>(1, new KoordinaattiComparator());
-        Keko omaKeko = new Keko();
+        Keko omaKeko = new Keko(200000);
         //Alustetaan javan priorityQueue koordinaateilla, tämän aika on testattu jo edellisessä.
-        for (int i = 2000000; i > 0; i--) {
+        for (int i = 200000; i > 0; i--) {
             Koordinaatti testi = new Koordinaatti(1, 1, i, 'g');
             javaKeko.add(testi);
         }
         //Alustetaan oma keko koordinaateilla, tämän aika on myös testattu jo edellisessä.
-        for (int i = 2000000; i > 0; i--) {
+        for (int i = 200000; i > 0; i--) {
             Koordinaatti testi = new Koordinaatti(1, 1, i, 'g');
             omaKeko.heapInsert(testi);
         }
 
         long aikaJavalleAlku = System.currentTimeMillis();
-        for (int i = 0; i < 2000000; i++) {
+        for (int i = 0; i < 200000; i++) {
             javaKeko.poll();
         }
         long aikaJavalleLoppu = System.currentTimeMillis();
         double javanTulos = aikaJavalleLoppu - aikaJavalleAlku;
 
         long aikaOmalleAlku = System.currentTimeMillis();
-        for (int i = 0; i < 2000000; i++) {
+        for (int i = 0; i < 200000; i++) {
             omaKeko.heapDelMin();
         }
         long aikaOmalleLoppu = System.currentTimeMillis();
         double omaTulos = aikaOmalleLoppu - aikaOmalleAlku;
 
-        assertTrue(omaTulos < javanTulos);
+        assertTrue("Ois ollu: " + (omaTulos - javanTulos),(omaTulos - javanTulos) < 1000);
     }
 }
