@@ -16,6 +16,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import tietorakenteet.Keko;
 
 /**
  *
@@ -85,7 +86,8 @@ public class LabyrinttiSolverTest {
     @Test
     public void relaksoidaanJotainKoordinaattia() {
         int painoarvo = koordinaatit[3][3].getPainoarvo();
-        PriorityQueue<Koordinaatti> valekeko = new PriorityQueue<Koordinaatti>(1, new KoordinaattiComparator());
+        //PriorityQueue<Koordinaatti> valekeko = new PriorityQueue<Koordinaatti>(1, new KoordinaattiComparator());
+        Keko valekeko = new Keko();
         Koordinaatti naatti = koordinaatit[1][1];
         solveri.relaksoi(valekeko, koordinaatit,naatti , 3, 3);
         assertTrue(koordinaatit[3][3].getPainoarvo() < painoarvo);

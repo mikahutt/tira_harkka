@@ -24,6 +24,10 @@ public class Labyrintti {
         {'#', '#', '#', '#', '#', '#', '#', '#', 'L', '#'}};
 
     }
+    
+    public Labyrintti(char[][] taulu) {
+        labyrintti = taulu;
+    }
 
     public char[][] getLabyrintti() {
         return labyrintti;

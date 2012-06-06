@@ -3,6 +3,7 @@ package logiikka;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;
+import tietorakenteet.Keko;
 
 
 
@@ -23,16 +24,19 @@ public class LabyrinttiSolver {
         // Laitetaan talteen jokaista labyrintin kohtaa vastaava koordinaatti-olio
         Koordinaatti[][] koordinaatit = new Koordinaatti[labyrintti.labyrintinKorkeus()][labyrintti.labyrintinLeveys()];
         // Dijkstran ydin, keko, toteutettuna alussa javan valmiin PriorityQueue:n avulla
-        PriorityQueue<Koordinaatti> valekeko = new PriorityQueue<Koordinaatti>(1, new KoordinaattiComparator());
-
+        //PriorityQueue<Koordinaatti> valekeko = new PriorityQueue<Koordinaatti>(1, new KoordinaattiComparator());
+        Keko valekeko = new Keko();
+        
         koordinaattienAlustus(koordinaatit);
         Koordinaatti aloitus = aloituksenEtsinta(koordinaatit);
         
-        valekeko.add(aloitus);
+       // valekeko.add(aloitus);
+        valekeko.heapInsert(aloitus);
         int montaLiikkumista = 0;
         while (!valekeko.isEmpty()) {
            // montaLiikkumista++;
-            Koordinaatti p = valekeko.poll();
+           // Koordinaatti p = valekeko.poll();
+            Koordinaatti p = valekeko.heapDelMin();
             if (p.getMerkki() == 'L') {
                 montaLiikkumista = p.getPainoarvo();
                 break;
@@ -88,7 +92,7 @@ public class LabyrinttiSolver {
      * 
      * "Relaksoi" eli päivittää solmun (koordinaatin) painoarvon
      */
-    public void relaksoi(PriorityQueue<Koordinaatti> valekeko, Koordinaatti[][] koordinaatit, Koordinaatti p, int x, int y) {
+    public void relaksoi(Keko valekeko, Koordinaatti[][] koordinaatit, Koordinaatti p, int x, int y) {
 
         if (onkoEpaKelpoSeuraaja(x, y,p.isKayty(), koordinaatit)) {
             return;
@@ -101,7 +105,7 @@ public class LabyrinttiSolver {
         if (uusiE < vanhaE) {
             char valiaikainen = koordinaatit[y][x].getMerkki();
             koordinaatit[y][x] = new Koordinaatti(x, y, uusiE, valiaikainen);
-            valekeko.add(koordinaatit[y][x]);
+            valekeko.heapInsert(koordinaatit[y][x]);
         }
     }
 
@@ -113,7 +117,7 @@ public class LabyrinttiSolver {
      * 
      * relaksoi kaikki koordinaatin vierukset, eli suorittaa leveyssuuntaisen haun.
      */
-    private void relaksoiKaikkiVierukset(Koordinaatti p, Koordinaatti[][] koordinaatit, PriorityQueue valekeko) {
+    private void relaksoiKaikkiVierukset(Koordinaatti p, Koordinaatti[][] koordinaatit, Keko valekeko) {
         if (!seina(koordinaatit,p.getX() - 1, p.getY()))
             relaksoi(valekeko, koordinaatit, p, p.getX() - 1, p.getY());
         if (!seina(koordinaatit,p.getX() + 1, p.getY()))

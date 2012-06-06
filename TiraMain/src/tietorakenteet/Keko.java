@@ -47,6 +47,10 @@ public class Keko {
         keonSisalto = new KeonTaulukko(taulukonKoko);
         hiipinKoko = 0;
     }
+    
+    public boolean isEmpty() {
+        return heapSize() == 0;
+    }
     public void heapInsert(Koordinaatti k) {
         hiipinKoko++;
         int i = heapSize();
