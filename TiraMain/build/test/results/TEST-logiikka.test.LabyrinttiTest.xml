@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="MH-PC" name="logiikka.test.LabyrinttiTest" tests="1" time="0.163" timestamp="2012-06-07T08:49:11">
+<testsuite errors="0" failures="0" hostname="MH-PC" name="logiikka.test.LabyrinttiTest" tests="1" time="0.142" timestamp="2012-06-07T11:00:30">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="FI" />
@@ -51,9 +51,11 @@
     <property name="os.name" value="Windows 7" />
     <property name="libs.beans-binding.classpath" value="C:\Program Files (x86)\NetBeans 7.1.2\java\modules\ext\beansbinding-1.2.1.jar" />
     <property name="libs.DataBindingME-SVG.javadoc" value="C:\Program Files (x86)\NetBeans 7.1.2\mobility\modules\docs\netbeans_databindingme_svg-api.zip" />
+    <property name="org.whattf.datatype.lang-registry" value="jar:file:/C:/Program%20Files%20(x86)/NetBeans%207.1.2/ide/modules/ext/validator.jar!/nu/validator/localentities/files/www_iana_org_assignments_language_subtag_registry" />
     <property name="libs.restapi.javadoc" value="C:\Program Files (x86)\NetBeans 7.1.2\enterprise\docs\jsr311-api-1.1.1-javadoc.zip" />
     <property name="libs.JWSAntTasks.maven-pom" value="" />
     <property name="libs.ojec-ant-utils.src" value="" />
+    <property name="nu.validator.spec.alt-advice" value="jar:file:/C:/Program%20Files%20(x86)/NetBeans%207.1.2/ide/modules/ext/validator.jar!/nu/validator/localentities/files/wiki_whatwg_org_wiki_Validator_nu_alt_advice" />
     <property name="libs.spring-webmvc3.0.src" value="" />
     <property name="libs.restapi.classpath" value="C:\Program Files (x86)\NetBeans 7.1.2\enterprise\modules\ext\rest\jsr311-api-1.1.1.jar" />
     <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
@@ -161,6 +163,7 @@
     <property name="libs.JAXB-ENDORSED.maven-pom" value="" />
     <property name="libs.spring-framework.classpath" value="C:\Program Files (x86)\NetBeans 7.1.2\ide\modules\org-apache-commons-logging.jar;C:\Program Files (x86)\NetBeans 7.1.2\java\modules\ext\cglib-2.2.jar;C:\Program Files (x86)\NetBeans 7.1.2\java\modules\ext\spring\spring-2.5.6.SEC03.jar" />
     <property name="libs.eclipselink.maven-pom" value="" />
+    <property name="org.whattf.datatype.charset-registry" value="jar:file:/C:/Program%20Files%20(x86)/NetBeans%207.1.2/ide/modules/ext/validator.jar!/nu/validator/localentities/files/www_iana_org_assignments_character_sets" />
     <property name="manifest.available" value="true" />
     <property name="libs.primefaces.javadoc" value="" />
     <property name="libs.spring-framework300.maven-pom" value="" />
@@ -286,17 +289,18 @@
     <property name="libs.JWSAntTasks.src" value="" />
     <property name="jar.index" value="false" />
     <property name="libs.CopyLibs.maven-pom" value="" />
+    <property name="libs.absolutelayout.javadoc" value="" />
     <property name="libs.hibernate-persistence.maven-pom" value="" />
     <property name="libs.spring-framework300.javadoc" value="" />
-    <property name="libs.absolutelayout.javadoc" value="" />
-    <property name="java.specification.name" value="Java Platform API Specification" />
     <property name="guice.disable.misplaced.annotation.check" value="true" />
-    <property name="libs.jakarta_slide_ant_webdav.maven-pom" value="" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="nu.validator.spec.microsyntax-descriptions" value="jar:file:/C:/Program%20Files%20(x86)/NetBeans%207.1.2/ide/modules/ext/validator.jar!/nu/validator/localentities/files/wiki_whatwg_org_wiki_MicrosyntaxDescriptions" />
     <property name="libs.NetBeans MIDP Components WMA.classpath" value="C:\Program Files (x86)\NetBeans 7.1.2\mobility\modules\ext\netbeans_midp_components_wma.jar" />
+    <property name="libs.jakarta_slide_ant_webdav.maven-pom" value="" />
     <property name="do.archive+main.class.available" value="true" />
     <property name="libs.sjmc-ant-utils.src" value="" />
-    <property name="libs.cdc-agui-swing-layout.javadoc" value="" />
     <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="libs.cdc-agui-swing-layout.javadoc" value="" />
     <property name="libs.javac-api.classpath" value="C:\Program Files (x86)\NetBeans 7.1.2\java\modules\ext\javac-api-nb-7.0-b07.jar" />
     <property name="libs.nokiaS80-ant-utils.classpath" value="C:\Program Files (x86)\NetBeans 7.1.2\mobility\modules\ext\org-netbeans-modules-j2me-cdc-project-nokiaS80.jar" />
     <property name="java.version" value="1.6.0_20" />
@@ -309,8 +313,8 @@
     <property name="ap.cmd.line.internal" value="" />
     <property name="libs.eclipselinkmodelgen.maven-pom" value="" />
     <property name="libs.jsp-compilation-syscp.javadoc" value="" />
-    <property name="ant.file.TiraMain-impl" value="C:\Users\MH\tira_harkka\TiraMain\nbproject\build-impl.xml" />
     <property name="libs.junit.maven-pom" value="" />
+    <property name="ant.file.TiraMain-impl" value="C:\Users\MH\tira_harkka\TiraMain\nbproject\build-impl.xml" />
     <property name="libs.eclipselinkmodelgen.javadoc" value="" />
     <property name="libs.metro.javadoc" value="C:\Program Files (x86)\NetBeans 7.1.2\enterprise\docs\metro-1.4-doc.zip" />
     <property name="libs.struts.maven-pom" value="" />
@@ -346,8 +350,8 @@
     <property name="annotation.processing.enabled" value="true" />
     <property name="sun.awt.keepWorkingSetOnMinimize" value="true" />
     <property name="libs.jsf20.src" value="" />
-    <property name="libs.DataBindingME-SVG.maven-pom" value="" />
     <property name="libs.jsf12.src" value="" />
+    <property name="libs.DataBindingME-SVG.maven-pom" value="" />
     <property name="libs.nokiadeployment.src" value="" />
     <property name="libs.savaje-ant-utils.javadoc" value="" />
     <property name="libs.struts.javadoc" value="C:\Program Files (x86)\NetBeans 7.1.2\enterprise\docs\struts-1.3.10-javadoc.zip" />
@@ -362,10 +366,10 @@
     <property name="libs.groovy-all.javadoc" value="" />
     <property name="do.archive+manifest.available+main.class" value="true" />
     <property name="libs.groovy-all.classpath" value="C:\Program Files (x86)\NetBeans 7.1.2\groovy\modules\ext\groovy-all.jar" />
-    <property name="javac.fork" value="true" />
     <property name="libs.sjmc-ant-utils.classpath" value="C:\Program Files (x86)\NetBeans 7.1.2\mobility\modules\ext\org-netbeans-modules-j2me-cdc-project-sjmc.jar" />
-    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+    <property name="javac.fork" value="true" />
     <property name="libs.JMUnit4CLDC10.classpath" value="C:\Program Files (x86)\NetBeans 7.1.2\mobility\modules\ext\jmunit4cldc10-1.2.1.jar" />
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
     <property name="default.javac.source" value="1.6" />
     <property name="debug-transport-by-os" value="dt_shmem" />
     <property name="sun.jnu.encoding" value="Cp1252" />
@@ -379,8 +383,8 @@
     <property name="libs.sjmc-ant-utils.javadoc" value="" />
     <property name="manifest.available+main.class+mkdist.available" value="true" />
     <property name="default.javac.target" value="1.6" />
-    <property name="libs.Java-EE-GlassFish-v3.src" value="" />
     <property name="libs.junit_4.classpath" value="C:\Users\MH\.netbeans\7.1.2\modules\ext\junit-4.10.jar" />
+    <property name="libs.Java-EE-GlassFish-v3.src" value="" />
     <property name="user.timezone" value="" />
     <property name="libs.ant-contrib.src" value="" />
     <property name="libs.javaee-endorsed-api-6.0.maven-pom" value="" />
@@ -404,8 +408,8 @@
     <property name="os.version" value="6.1" />
     <property name="application.args" value="" />
     <property name="libs.EclipseLink-GlassFish-v3.javadoc" value="C:\Program Files (x86)\NetBeans 7.1.2\enterprise\docs\javaee6-doc-api.zip" />
-    <property name="libs.JMUnit4CLDC11.maven-pom" value="" />
     <property name="main.class.available" value="true" />
+    <property name="libs.JMUnit4CLDC11.maven-pom" value="" />
     <property name="ant.file.type.TiraMain-impl" value="file" />
     <property name="libs.toplink.javadoc" value="" />
     <property name="sun.desktop" value="windows" />
@@ -433,18 +437,18 @@
     <property name="libs.jsf12.maven-pom" value="" />
     <property name="libs.junit.src" value="" />
     <property name="main.class" value="tiramain.Main" />
-    <property name="libs.CopyLibs.src" value="" />
     <property name="build.dir" value="build" />
+    <property name="libs.CopyLibs.src" value="" />
     <property name="libs.jsp-compilation.classpath" value="C:\Program Files (x86)\NetBeans 7.1.2\java\ant\lib\ant.jar;C:\Program Files (x86)\NetBeans 7.1.2\enterprise\modules\ext\servlet3.0-jsp2.2-api.jar;C:\Program Files (x86)\NetBeans 7.1.2\enterprise\modules\ext\glassfish-jspparser-3.0.jar;C:\Program Files (x86)\NetBeans 7.1.2\enterprise\modules\ext\jsf-2_1\jsf-api.jar;C:\Program Files (x86)\NetBeans 7.1.2\enterprise\modules\ext\jstl.jar;C:\Program Files (x86)\NetBeans 7.1.2\java\ant\lib\ant-launcher.jar" />
     <property name="ant.version" value="Apache Ant(TM) version 1.8.3 compiled on February 26 2012" />
-    <property name="file.encoding" value="Cp1252" />
     <property name="build.classes.excludes" value="**/*.java,**/*.form" />
-    <property name="jdkBug6558476" value="true" />
+    <property name="file.encoding" value="Cp1252" />
     <property name="javadoc.nonavbar" value="false" />
+    <property name="jdkBug6558476" value="true" />
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
   </properties>
-  <testcase classname="logiikka.test.LabyrinttiTest" name="leveysJaPituusOikeinPain" time="0.01" />
+  <testcase classname="logiikka.test.LabyrinttiTest" name="leveysJaPituusOikeinPain" time="0.0060" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
