@@ -8,7 +8,8 @@ import logiikka.Koordinaatti;
 
 /**
  *
- * @author MH
+ * Keko sisältää luokan KeonTaulukko, joka kapseloi sisäänsä tavallisen taulukon
+ * joka sisältää koordinaatteja. Kun taulukko tulee täyteen, niin sen koko tuplataan.
  */
 public class KeonTaulukko {
 
@@ -47,13 +48,15 @@ public class KeonTaulukko {
     /**
      * Lisää koordinaatin k taulukon paikkaan i. Metodi tarkastaa syötteen
      * oikeellisuuden. Jos taulukko on täynnä, niin taulukon koko tuplataan
-     * ennen lisäämistä.
+     * ennen lisäämistä. Teen taulukon kopioimisen manuaalisesti, sillä
+     * automaattinen IDE:n generoima arraycopy aiheutti minulle puolen tunnin
+     * debuggaus virheen.
      *
      * @param k
      * @param i
      */
     public void lisaa(int i, Koordinaatti k) {
-        
+
         if (kuinkaMontaMahtuu() == 0 || i >= taulukko.length) {
             Koordinaatti[] kopio = new Koordinaatti[taulukonKoko() * 2];
             for (int j = 0; j < taulukko.length; j++) {
@@ -68,29 +71,35 @@ public class KeonTaulukko {
 
     }
 
+    /**
+     * Poistaa alkion taulukosta, eli asettaa sen nulliksi.
+     * @param i 
+     */
     public void poista(int i) {
         taulukko[i] = null;
     }
 
+    /**
+     * Palauttaa taulukon pituuden
+     * @return 
+     */
     public int taulukonKoko() {
         return taulukko.length;
     }
 
+    /**
+     * Palauttaa tiedon siitä kuinka monta alkiota taulukkoon mahtuu vielä, ennen kuin sen koko tulee tuplata.
+     * @return 
+     */
     public int kuinkaMontaMahtuu() {
-//        int maara = 0;
-//        for (int i = 0; i < taulukko.length; i++) {
-//            if (taulukko[i] == null) {
-//                break;
-//            }
-//            maara++;
-//            
-//        }
         return maara;
     }
 
-//    public void asetaIndeksiin(int i, Koordinaatti k) {
-//        taulukko[i] = k;
-//    }
+    /**
+     * Palauttaa taulukon alkion joka sijaitsee parametrina saadussa indeksissä.
+     * @param i
+     * @return 
+     */
     public Koordinaatti haeIndeksista(int i) {
         return taulukko[i];
     }

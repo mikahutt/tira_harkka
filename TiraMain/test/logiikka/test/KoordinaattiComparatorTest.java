@@ -46,9 +46,5 @@ public class KoordinaattiComparatorTest {
         assertTrue(komparaattori.compare(b,a) < 0);
         assertTrue(komparaattori.compare(c,b) == 0);
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+
 }

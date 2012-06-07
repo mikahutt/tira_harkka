@@ -1,10 +1,9 @@
 package logiikka.test;
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * To change this template, choose Tools | Templates and open the template in
+ * the editor.
  */
-
 import logiikka.Labyrintti;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,6 +17,7 @@ import static org.junit.Assert.*;
  * @author MH
  */
 public class LabyrinttiTest {
+
     private Labyrintti labyrintti;
 
     public LabyrinttiTest() {
@@ -39,16 +39,9 @@ public class LabyrinttiTest {
     @After
     public void tearDown() {
     }
-    
+
     @Test
     public void leveysJaPituusOikeinPain() {
         assertTrue(labyrintti.labyrintinKorkeus() == 5 && labyrintti.labyrintinLeveys() == 10);
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
-
 }

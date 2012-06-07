@@ -7,13 +7,14 @@ package logiikka;
 
 /**
  *
- * @author MH
+ * Luokka, joka esittää labyrintteja 2-ulotteisena char-taulukkona.
+ * 
  */
 public class Labyrintti {
     private char[][] labyrintti;
 
-    /*
-     * Kovakoodataan tylsä char-labyrintti
+    /**
+     * Ilman parametreja luotaessa oletus labyrintti on kovakoodattu.
      */
     public Labyrintti(){
         labyrintti = new char[][] {
@@ -25,18 +26,35 @@ public class Labyrintti {
 
     }
     
+    /**
+     * Labyrintin voi luoda myös parametrina saadusta char-taulukosta.
+     * Erityisesti Bittikartta luokka luo tälläisia taulukoita.
+     * @param taulu 
+     */
     public Labyrintti(char[][] taulu) {
         labyrintti = taulu;
     }
 
+    /**
+     * Palauttaa labyrintin sisältämän char-esityksen.
+     * @return 
+     */
     public char[][] getLabyrintti() {
         return labyrintti;
     }
 
+    /**
+     * Palauttaa labyrintin leveyden
+     * @return 
+     */
     public int labyrintinLeveys() {
         return labyrintti[0].length;
     }
 
+    /**
+     * Palauttaa labyrintin korkeuden.
+     * @return 
+     */
     public int labyrintinKorkeus() {
         return labyrintti.length;
     }

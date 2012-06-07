@@ -49,10 +49,5 @@ public class KoordinaattiTest {
         assertTrue(koordinaatti.getPainoarvo() == 10 && koordinaatti2.getPainoarvo() == 0 && koordinaatti3.getPainoarvo() == 0);
 
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 
 }

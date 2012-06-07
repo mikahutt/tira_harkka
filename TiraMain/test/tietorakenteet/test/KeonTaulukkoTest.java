@@ -36,11 +36,11 @@ public class KeonTaulukkoTest {
     @After
     public void tearDown() {
     }
-    
+
     @Test
     public void parametritonKonstruktori() {
-        assertEquals(100,taulu2.taulukonKoko());
-        assertEquals(100,taulu2.kuinkaMontaMahtuu());
+        assertEquals(100, taulu2.taulukonKoko());
+        assertEquals(100, taulu2.kuinkaMontaMahtuu());
     }
 
     @Test
@@ -51,7 +51,7 @@ public class KeonTaulukkoTest {
     @Test
     public void puolillaanOlevaanTaulukkoonMahtuuVielaPuolet() {
         for (int i = 0; i < 150; i++) {
-            taulu.lisaa(i,new Koordinaatti(1, 1, 1, 'd'));
+            taulu.lisaa(i, new Koordinaatti(1, 1, 1, 'd'));
         }
         assertEquals(150, taulu.kuinkaMontaMahtuu());
     }
@@ -59,7 +59,7 @@ public class KeonTaulukkoTest {
     @Test
     public void tayteenTaulukkoonEiMahduEnaa() {
         for (int i = 0; i < 300; i++) {
-            taulu.lisaa(i,new Koordinaatti(1, 1, 1, 'd'));
+            taulu.lisaa(i, new Koordinaatti(1, 1, 1, 'd'));
         }
         assertEquals(0, taulu.kuinkaMontaMahtuu());
     }
@@ -68,7 +68,7 @@ public class KeonTaulukkoTest {
     public void lisaaminenToimii() {
         for (int i = 0; i < 1000; i++) {
             Koordinaatti k = new Koordinaatti(1, 1, 1, 'k');
-            taulu.lisaa(i,k);
+            taulu.lisaa(i, k);
         }
         assertEquals(taulu.taulukonKoko(), 1200);
     }
@@ -77,16 +77,16 @@ public class KeonTaulukkoTest {
     public void lisaaminenToimiiRajaArvoilla() {
         for (int i = 0; i < 1200; i++) {
             Koordinaatti k = new Koordinaatti(1, 1, 1, 'k');
-            taulu.lisaa(i,k);
+            taulu.lisaa(i, k);
         }
         assertEquals(taulu.taulukonKoko(), 1200);
     }
-    
-        @Test
+
+    @Test
     public void lisaaminenToimiiRajaArvoaYhtaSuuremmalla() {
         for (int i = 0; i < 1201; i++) {
             Koordinaatti k = new Koordinaatti(1, 1, 1, 'k');
-            taulu.lisaa(i,k);
+            taulu.lisaa(i, k);
         }
         assertEquals(taulu.taulukonKoko(), 2400);
     }

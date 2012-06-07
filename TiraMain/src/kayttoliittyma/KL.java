@@ -6,7 +6,7 @@ package kayttoliittyma;
 
 /**
  *
- * @author MH
+ * Ohjelman käyttöliittymä. Tästä tullee kevyt graafinen liittymä.
  */
 public class KL {
     

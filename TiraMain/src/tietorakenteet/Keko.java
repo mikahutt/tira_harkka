@@ -14,55 +14,86 @@ import logiikka.Koordinaatti;
 public class Keko {
 
     /**
-     * Tehdään keon sisältö aluksi maksimipituudeltaan sadan kokoiseksi,
-     * myöhemmin tehdään tuplaava taulukko. Alussa minimikeko.
+     * Tuplaavalla taulukolla toimiva minimikeko.
+     *
      */
     private KeonTaulukko keonSisalto;
     private int hiipinKoko;
 
+    /**
+     * Palauttaa keon sisältämien alkioiden lukumäärän.
+     * @return 
+     */
     public int getHiipinKoko() {
         return hiipinKoko;
     }
 
+    /**
+     * Asettaa alkioiden lukumäärän, tämä lienee täysin turha.
+     * @param hiipinKoko 
+     */
     public void setHiipinKoko(int hiipinKoko) {
         this.hiipinKoko = hiipinKoko;
     }
 
+    /**
+     * Palauttaa keon sisällön, eli keon kapseloiman keonTaulukon joka sisältää
+     * koordinaatteja.
+     * @return 
+     */
     public KeonTaulukko getKeonSisalto() {
         return keonSisalto;
     }
 
+    /**
+     * Asettaa keolle parametrina saadut alkiot ja poistaa vanhat.
+     * @param keonSisalto 
+     */
     public void setKeonSisalto(KeonTaulukko keonSisalto) {
         this.keonSisalto = keonSisalto;
     }
 
-
-
+    /**
+     * Luo oletuksena keon johon mahtuu 100 alkiota, ennen kuin aikaa vievä taulukon tuplaaminen
+     * on tehtävä.
+     */
     public Keko() {
         keonSisalto = new KeonTaulukko(100);
         hiipinKoko = 0;
     }
 
+    /**
+     * Luo halutun kokoisen keon. Tämä koko siis määrittää sen, kuinka monennen alkion lisäämisen jälkeen
+     * keon sisältämä taulukko joudutaan tuplaamaan.
+     * @param taulukonKoko 
+     */
     public Keko(int taulukonKoko) {
         keonSisalto = new KeonTaulukko(taulukonKoko);
         hiipinKoko = 0;
     }
-    
+
+    /**
+     * Palauttaa tiedon siitä onko keko tyhjä.
+     * @return 
+     */
     public boolean isEmpty() {
         return heapSize() == 0;
     }
+
+    /**
+     * Asettaa alkion kekoon oikealle paikalleen. Tämä tapahtuu yksinkertaisesti vertailemalla
+     * keossa olevien koordinaattien painoarvoja.
+     * @param k 
+     */
     public void heapInsert(Koordinaatti k) {
         hiipinKoko++;
         int i = heapSize();
         while (i > 1 && this.parent(i).getPainoarvo() > k.getPainoarvo()) {
-            keonSisalto.lisaa(i, keonSisalto.haeIndeksista(i/2));
-            //keonSisalto[i] = keonSisalto[i / 2];
+            keonSisalto.lisaa(i, keonSisalto.haeIndeksista(i / 2));
             i = (i / 2);
         }
-        //keonSisalto.asetaIndeksiin(i, k);
-        keonSisalto.lisaa(i,k);
-        //keonSisalto[i] = k;
-        
+        keonSisalto.lisaa(i, k);
+
     }
 
     /**
@@ -71,8 +102,7 @@ public class Keko {
      * @return
      */
     public Koordinaatti heapMin() {
-       return keonSisalto.haeIndeksista(1);
-        // return keonSisalto[1];
+        return keonSisalto.haeIndeksista(1);
     }
 
     /**
@@ -84,8 +114,6 @@ public class Keko {
         Koordinaatti min = this.heapMin();
         keonSisalto.lisaa(1, keonSisalto.haeIndeksista(heapSize()));
         keonSisalto.lisaa(heapSize(), null);
-        // keonSisalto[1] = keonSisalto[heapSize()];
-        //keonSisalto[heapSize()] = null;
         hiipinKoko--;
 
         heapify(1);
@@ -119,11 +147,7 @@ public class Keko {
      * @return
      */
     public Koordinaatti parent(int i) {
-//        if (i == 0 || i > this.heapSize() * 2) {
-//            return null;
-//        }
-        return keonSisalto.haeIndeksista(i/2);
-       // return keonSisalto[i / 2];
+        return keonSisalto.haeIndeksista(i / 2);
     }
 
     /**
@@ -136,8 +160,7 @@ public class Keko {
         if (i > (this.heapSize() / 2)) {
             return null;
         }
-        return keonSisalto.haeIndeksista(i*2);
-        //return keonSisalto[i * 2];
+        return keonSisalto.haeIndeksista(i * 2);
     }
 
     /**
@@ -150,12 +173,12 @@ public class Keko {
         if (i > (this.heapSize() / 2)) {
             return null;
         }
-        return keonSisalto.haeIndeksista(i*2+1);
-        //return keonSisalto[i * 2 + 1];
+        return keonSisalto.haeIndeksista(i * 2 + 1);
     }
 
     /**
-     * Metodi heapify pitää keko-ehdon voimassa
+     * Metodi heapify pitää keko-ehdon voimassa. Koitan keksiä tähän
+     * elegantimman toteutuksen.
      *
      * @param i
      */
@@ -176,12 +199,10 @@ public class Keko {
                 pienimmanIndeksi = i * 2 + 1;
             }
             if (keonSisalto.haeIndeksista(i).getPainoarvo() > pienin.getPainoarvo()) {
-           // if (keonSisalto[i].getPainoarvo() > pienin.getPainoarvo()) {
                 this.vaihda(i, pienimmanIndeksi);
                 this.heapify(pienimmanIndeksi);
             }
-        } else if (i*2 == heapSize() && keonSisalto.haeIndeksista(i).getPainoarvo() > vasen.getPainoarvo()) {
-        //else if (i * 2 == heapSize() && keonSisalto[i].getPainoarvo() > vasen.getPainoarvo()) {
+        } else if (i * 2 == heapSize() && keonSisalto.haeIndeksista(i).getPainoarvo() > vasen.getPainoarvo()) {
             this.vaihda(i, i * 2);
         }
     }
@@ -190,8 +211,5 @@ public class Keko {
         Koordinaatti talteen = keonSisalto.haeIndeksista(i);
         keonSisalto.lisaa(i, keonSisalto.haeIndeksista(j));
         keonSisalto.lisaa(j, talteen);
-       // Koordinaatti talteen = keonSisalto[i];
-        //keonSisalto[i] = keonSisalto[j];
-        //keonSisalto[j] = talteen;
     }
 }

@@ -197,7 +197,7 @@ public class KekoTest {
         Keko omaKeko = new Keko(100000);
 
         long aikaJavalleAlku = System.currentTimeMillis();
-        for (int i = 0; i < 2000000; i++) {
+        for (int i = 0; i < isoLuku / 3; i++) {
             Koordinaatti testi = new Koordinaatti(1, 1, i, 'g');
             javaKeko.add(testi);
         }
@@ -205,14 +205,14 @@ public class KekoTest {
         double javanTulos = aikaJavalleLoppu - aikaJavalleAlku;
 
         long aikaOmalleAlku = System.currentTimeMillis();
-        for (int i = 0; i < 2000000; i++) {
+        for (int i = 0; i < isoLuku / 3; i++) {
             Koordinaatti testi = new Koordinaatti(1, 1, i, 'g');
             omaKeko.heapInsert(testi);
         }
         long aikaOmalleLoppu = System.currentTimeMillis();
         double omaTulos = aikaOmalleLoppu - aikaOmalleAlku;
 
-        assertTrue("Ois ollu: " + (omaTulos - javanTulos),(omaTulos - javanTulos) < 1000);
+        assertTrue("Ois ollu: " + (omaTulos - javanTulos), (omaTulos - javanTulos) < 1000);
     }
 
     /**
@@ -248,7 +248,7 @@ public class KekoTest {
         long aikaOmalleLoppu = System.currentTimeMillis();
         double omaTulos = aikaOmalleLoppu - aikaOmalleAlku;
 
-        assertTrue("Ois ollu: " + (omaTulos - javanTulos),(omaTulos - javanTulos) < 1000);
+        assertTrue("Ois ollu: " + (omaTulos - javanTulos), (omaTulos - javanTulos) < 1000);
     }
 
     /**
@@ -276,7 +276,7 @@ public class KekoTest {
         long aikaOmalleLoppu = System.currentTimeMillis();
         double omaTulos = aikaOmalleLoppu - aikaOmalleAlku;
 
-        assertTrue("Ois ollu: " + (omaTulos - javanTulos),(omaTulos - javanTulos) < 1000);
+        assertTrue("Ois ollu: " + (omaTulos - javanTulos), (omaTulos - javanTulos) < 1000);
     }
 
     @Test
@@ -308,6 +308,6 @@ public class KekoTest {
         long aikaOmalleLoppu = System.currentTimeMillis();
         double omaTulos = aikaOmalleLoppu - aikaOmalleAlku;
 
-        assertTrue("Ois ollu: " + (omaTulos - javanTulos),(omaTulos - javanTulos) < 1000);
+        assertTrue("Ois ollu: " + (omaTulos - javanTulos), (omaTulos - javanTulos) < 1000);
     }
 }

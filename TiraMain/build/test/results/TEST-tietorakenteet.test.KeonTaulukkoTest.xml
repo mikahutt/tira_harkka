@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="MH-PC" name="tietorakenteet.test.KeonTaulukkoTest" tests="7" time="0.195" timestamp="2012-06-06T15:03:24">
+<testsuite errors="0" failures="0" hostname="MH-PC" name="tietorakenteet.test.KeonTaulukkoTest" tests="7" time="0.241" timestamp="2012-06-07T08:49:20">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="FI" />
@@ -444,11 +444,11 @@
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
   </properties>
-  <testcase classname="tietorakenteet.test.KeonTaulukkoTest" name="parametritonKonstruktori" time="0.011" />
-  <testcase classname="tietorakenteet.test.KeonTaulukkoTest" name="tyhjaanTaulukkoonMahtuuOikeaMaara" time="0.0" />
+  <testcase classname="tietorakenteet.test.KeonTaulukkoTest" name="parametritonKonstruktori" time="0.0060" />
+  <testcase classname="tietorakenteet.test.KeonTaulukkoTest" name="tyhjaanTaulukkoonMahtuuOikeaMaara" time="0.0010" />
   <testcase classname="tietorakenteet.test.KeonTaulukkoTest" name="puolillaanOlevaanTaulukkoonMahtuuVielaPuolet" time="0.0010" />
   <testcase classname="tietorakenteet.test.KeonTaulukkoTest" name="tayteenTaulukkoonEiMahduEnaa" time="0.0010" />
-  <testcase classname="tietorakenteet.test.KeonTaulukkoTest" name="lisaaminenToimii" time="0.0020" />
+  <testcase classname="tietorakenteet.test.KeonTaulukkoTest" name="lisaaminenToimii" time="0.0010" />
   <testcase classname="tietorakenteet.test.KeonTaulukkoTest" name="lisaaminenToimiiRajaArvoilla" time="0.0010" />
   <testcase classname="tietorakenteet.test.KeonTaulukkoTest" name="lisaaminenToimiiRajaArvoaYhtaSuuremmalla" time="0.0010" />
   <system-out><![CDATA[]]></system-out>

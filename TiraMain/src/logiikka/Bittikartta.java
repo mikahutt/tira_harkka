@@ -14,19 +14,22 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author MH
+ * Tämä luokka muuttaa paintilla piirrettyjä labyrintteja Labyrintti-luokalle syötäväksi.
  */
 public class Bittikartta {
 
     final static int MUSTA = -16777216;
     final static int VALKEA = -1;
     final static int LAHTO = -3584;
-    final static int MAALI = -65536;
+    final static int MAALI = -1237980;
     private char[][] labyrintti;
     private int korkeus;
     private int leveys;
     BufferedImage kuva;
-
+    /**
+     * Muodostaa parametrina saadusta tiedosto nimestä/polusta char[][] taulukon.
+     * @param tiedosto 
+     */
     public Bittikartta(String tiedosto) {
         kuva = null;
 
@@ -39,11 +42,15 @@ public class Bittikartta {
             System.exit(0);
 
         }
-       // teeLabyrintti(kuva);
-    }
-    
-    public char[][] getLabyrintti() {
+        
         teeLabyrintti(kuva);
+    }
+
+    /**
+     * Palauttaa kuvasta luodun 2-ulotteisen char-taulukon, jonka voi antaa Labyrintti luokan konstruktorille.
+     * @return 
+     */
+    public char[][] getLabyrintti() {
         return labyrintti;
     }
 
@@ -56,26 +63,28 @@ public class Bittikartta {
         alustaLabyrintti(labyrintti, kuva);
     }
 
+    /**
+     * Alustaa labyrintin vastaaviksi charreiksi. Else on tässä sen takia että
+     * png-muotoiset kuvat tasoittavat värien reunoja, jolloin labyrintissa on
+     * paljon erilaisia värisävyjä. Tässä nekin määritellään kuljettaviksi.
+     *
+     * @param labyrintti
+     * @param kuva
+     */
     private void alustaLabyrintti(char[][] labyrintti, BufferedImage kuva) {
+
         for (int j = 0; j < korkeus; j++) {
             for (int i = 0; i < leveys; i++) {
                 int pikseli = kuva.getRGB(i, j);
-                
-                if (pikseli != MUSTA && pikseli != VALKEA) {
-                    System.out.println(pikseli);
-                }
-                
-                if (pikseli == VALKEA) {
-                    labyrintti[j][i] = '.';
-                }
+
                 if (pikseli == MUSTA) {
                     labyrintti[j][i] = '#';
-                }
-                if (pikseli == LAHTO) {
+                } else if (pikseli == LAHTO) {
                     labyrintti[j][i] = 'A';
-                }
-                if (pikseli == MAALI) {
+                } else if (pikseli == MAALI) {
                     labyrintti[j][i] = 'L';
+                } else {
+                    labyrintti[j][i] = '.';
                 }
             }
         }

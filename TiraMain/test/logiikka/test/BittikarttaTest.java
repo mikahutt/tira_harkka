@@ -4,16 +4,36 @@
  */
 package logiikka.test;
 
+import logiikka.Bittikartta;
 import org.junit.*;
 import static org.junit.Assert.*;
 
 /**
  *
- * @author MH
+ * Nämä testit olivat todella tärkeitä, sillä alkuperäisen A-star materiaalin RGB-arvot olivat väärin!
  */
 public class BittikarttaTest {
-    
+
+    Bittikartta musta;
+    Bittikartta keltainen;
+    Bittikartta punainen;
+    Bittikartta valkoinen;
+    Bittikartta labyrintti;
+    int korkeus;
+    int leveys;
+
+    /**
+     * Luodaan konstruktorissa, turha luoda setUpissa aina uudestaan ennen
+     * jokaista testiä.
+     */
     public BittikarttaTest() {
+        labyrintti = new Bittikartta("ekaLaby.png");
+        musta = new Bittikartta("labyMusta.png");
+        valkoinen = new Bittikartta("labyValkoinen.png");
+        keltainen = new Bittikartta("labyKeltanen.png");
+        punainen = new Bittikartta("labyPunainen.png");
+        korkeus = punainen.getLabyrintti().length;
+        leveys = punainen.getLabyrintti()[0].length;
     }
 
     @BeforeClass
@@ -23,17 +43,81 @@ public class BittikarttaTest {
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-     @Test
-     public void hello() {}
+
+    @Test
+    public void keltainenVariToimii() {
+        for (int i = 0; i < leveys; i++) {
+            for (int j = 0; j < korkeus; j++) {
+                assertTrue(keltainen.getLabyrintti()[j][i] == 'A');
+
+            }
+
+        }
+    }
+
+    @Test
+    public void punainenVariToimii() {
+        for (int i = 0; i < leveys; i++) {
+            for (int j = 0; j < korkeus; j++) {
+                assertTrue(punainen.getLabyrintti()[j][i] == 'L');
+
+            }
+
+        }
+    }
+
+    @Test
+    public void mustaVariToimii() {
+        for (int i = 0; i < leveys; i++) {
+            for (int j = 0; j < korkeus; j++) {
+                assertTrue(musta.getLabyrintti()[j][i] == '#');
+
+            }
+
+        }
+    }
+
+    @Test
+    public void valkoinenVariToimii() {
+        for (int i = 0; i < leveys; i++) {
+            for (int j = 0; j < korkeus; j++) {
+                assertTrue(valkoinen.getLabyrintti()[j][i] == '.');
+
+            }
+
+        }
+    }
+
+    @Test
+    public void labyrintistaLoytyyKaikkiaMerkkejaOikeassaSuhteessa() {
+        int punaisia = 0;
+        int mustia = 0;
+        int valkoisia = 0;
+        int keltaisia = 0;
+        for (int i = 0; i < leveys; i++) {
+            for (int j = 0; j < korkeus; j++) {
+                if (labyrintti.getLabyrintti()[j][i] == 'A') {
+                    keltaisia++;
+                } else if (labyrintti.getLabyrintti()[j][i] == 'L') {
+                    punaisia++;
+                } else if (labyrintti.getLabyrintti()[j][i] == '#') {
+                    mustia++;
+                } else {
+                    valkoisia++;
+                }
+            }
+
+        }
+        assertEquals("ois ollu: " + punaisia + "," + keltaisia, punaisia, keltaisia);
+        assertTrue("ois ollu: " + mustia + "," + punaisia, mustia > punaisia);
+        assertTrue(valkoisia > mustia);
+    }
 }

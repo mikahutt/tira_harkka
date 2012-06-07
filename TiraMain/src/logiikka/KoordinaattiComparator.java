@@ -14,9 +14,14 @@ import java.util.Comparator;
  */
 public class KoordinaattiComparator implements Comparator<Koordinaatti>{
 
-    public KoordinaattiComparator() {
-    }
+ 
 
+    /**
+     * Vertaa koordinaatteja niiden painoarvojen mukaan.
+     * @param o1
+     * @param o2
+     * @return 
+     */
     @Override
     public int compare(Koordinaatti o1, Koordinaatti o2) {
         return o1.getPainoarvo() - o2.getPainoarvo();
