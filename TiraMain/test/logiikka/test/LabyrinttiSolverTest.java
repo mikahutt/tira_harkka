@@ -39,7 +39,7 @@ public class LabyrinttiSolverTest {
         //Labyrintti laby = new Labyrintti();
         Bittikartta mappi = new Bittikartta("ekaLaby.png");
         Labyrintti laby = new Labyrintti(mappi.getLabyrintti());
-        solveri = new LabyrinttiSolver(laby);
+        solveri = new LabyrinttiSolver(laby,false);
         koordinaatit = new Koordinaatti[laby.labyrintinKorkeus()][laby.labyrintinLeveys()];
         solveri.koordinaattienAlustus(koordinaatit);
     }

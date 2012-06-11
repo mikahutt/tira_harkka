@@ -16,6 +16,7 @@ public class LabyrinttiSolver {
     private Koordinaatti[][] koordinaatit;
     private ArrayList<Koordinaatti> parasReitti;
     private HashMap<Koordinaatti, Koordinaatti> edeltajat;
+    private boolean eukleides;
 
     public ArrayList<Koordinaatti> getParasReitti() {
         return parasReitti;
@@ -31,9 +32,10 @@ public class LabyrinttiSolver {
      *
      * @param labyrintti
      */
-    public LabyrinttiSolver(Labyrintti labyrintti) {
+    public LabyrinttiSolver(Labyrintti labyrintti, boolean eukleides) {
         this.labyrintti = labyrintti;
         edeltajat = new HashMap();
+        this.eukleides = eukleides;
     }
 
     /**
@@ -182,6 +184,21 @@ public class LabyrinttiSolver {
         }
         if (!seina(koordinaatit, p.getX(), p.getY() + 1)) {
             relaksoi(valekeko, koordinaatit, p, p.getX(), p.getY() + 1);
+        }
+
+        if (eukleides) {
+            if (!seina(koordinaatit, p.getX() - 1, p.getY() - 1)) {
+                relaksoi(valekeko, koordinaatit, p, p.getX() - 1, p.getY() - 1);
+            }
+            if (!seina(koordinaatit, p.getX() + 1, p.getY() + 1)) {
+                relaksoi(valekeko, koordinaatit, p, p.getX() + 1, p.getY() + 1);
+            }
+            if (!seina(koordinaatit, p.getX() - 1, p.getY() + 1)) {
+                relaksoi(valekeko, koordinaatit, p, p.getX() - 1, p.getY() + 1);
+            }
+            if (!seina(koordinaatit, p.getX() + 1, p.getY() - 1)) {
+                relaksoi(valekeko, koordinaatit, p, p.getX() + 1, p.getY() - 1);
+            }
         }
     }
 

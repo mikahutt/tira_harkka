@@ -22,22 +22,12 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Bittikartta kartta = new Bittikartta("ekaLaby.png");
+        Bittikartta kartta = new Bittikartta("tokaLaby.png");
         Labyrintti laby = new Labyrintti(kartta.getLabyrintti());
-        LabyrinttiSolver solveri = new LabyrinttiSolver(laby);
+        LabyrinttiSolver solveri = new LabyrinttiSolver(laby,false);
         KL kayttoliittyma = new KL(solveri,kartta);
         SwingUtilities.invokeLater(kayttoliittyma);
-//        Labyrintti laby = new Labyrintti();
-//        LabyrinttiSolver solveri = new LabyrinttiSolver(laby);
-//        Koordinaatti[][] naatit = solveri.dijkstra();
-        
-//        for (Koordinaatti[] koordinaattis : naatit) {
-//            for (Koordinaatti koordinaatti : koordinaattis) {
-//                System.out.print(koordinaatti.getPainoarvo() + ",");
-//            }
-//            System.out.println("");
-//            }
-//            
+
         }
     }
 
