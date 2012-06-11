@@ -6,17 +6,17 @@ package tietorakenteet.test;
 
 import logiikka.Koordinaatti;
 import org.junit.*;
-import tietorakenteet.KeonTaulukko;
+import tietorakenteet.OmaArrayList;
 import static org.junit.Assert.*;
 
 /**
  *
  * @author MH
  */
-public class KeonTaulukkoTest {
+public class OmaArrayListTest {
 
-    private KeonTaulukko taulu;
-    private KeonTaulukko taulu2;
+    private OmaArrayList taulu;
+    private OmaArrayList taulu2;
 
     @BeforeClass
     public static void setUpClass() throws Exception {
@@ -28,8 +28,8 @@ public class KeonTaulukkoTest {
 
     @Before
     public void setUp() {
-        taulu = new KeonTaulukko(300);
-        taulu2 = new KeonTaulukko();
+        taulu = new OmaArrayList(300);
+        taulu2 = new OmaArrayList();
 
     }
 
@@ -65,6 +65,14 @@ public class KeonTaulukkoTest {
     }
 
     @Test
+    public void tuplattuunTaulukkoonMahtuu() {
+        for (int i = 0; i < 500; i++) {
+            taulu.lisaa(i, new Koordinaatti(1, 1, 1, 'd'));
+        }
+        assertEquals(100, taulu.kuinkaMontaMahtuu());
+    }
+
+    @Test
     public void lisaaminenToimii() {
         for (int i = 0; i < 1000; i++) {
             Koordinaatti k = new Koordinaatti(1, 1, 1, 'k');
@@ -89,5 +97,17 @@ public class KeonTaulukkoTest {
             taulu.lisaa(i, k);
         }
         assertEquals(taulu.taulukonKoko(), 2400);
+    }
+
+    @Test
+    public void indeksitonLisaaminen() {
+        for (int i = 0; i < 500; i++) {
+            Koordinaatti k = new Koordinaatti(1, 1, 1, 'f');
+            taulu.add(k);
+        }
+        for (int i = 0; i < 500; i++) {
+            assertNotNull("nää indeksit ei menny: " + i, taulu.haeIndeksista(i));
+
+        }
     }
 }

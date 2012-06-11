@@ -17,7 +17,7 @@ public class Keko {
      * Tuplaavalla taulukolla toimiva minimikeko.
      *
      */
-    private KeonTaulukko keonSisalto;
+    private OmaArrayList keonSisalto;
     private int hiipinKoko;
 
     /**
@@ -41,7 +41,7 @@ public class Keko {
      * koordinaatteja.
      * @return 
      */
-    public KeonTaulukko getKeonSisalto() {
+    public OmaArrayList getKeonSisalto() {
         return keonSisalto;
     }
 
@@ -49,7 +49,7 @@ public class Keko {
      * Asettaa keolle parametrina saadut alkiot ja poistaa vanhat.
      * @param keonSisalto 
      */
-    public void setKeonSisalto(KeonTaulukko keonSisalto) {
+    public void setKeonSisalto(OmaArrayList keonSisalto) {
         this.keonSisalto = keonSisalto;
     }
 
@@ -58,7 +58,7 @@ public class Keko {
      * on tehtävä.
      */
     public Keko() {
-        keonSisalto = new KeonTaulukko(100);
+        keonSisalto = new OmaArrayList(100);
         hiipinKoko = 0;
     }
 
@@ -68,7 +68,7 @@ public class Keko {
      * @param taulukonKoko 
      */
     public Keko(int taulukonKoko) {
-        keonSisalto = new KeonTaulukko(taulukonKoko);
+        keonSisalto = new OmaArrayList(taulukonKoko);
         hiipinKoko = 0;
     }
 

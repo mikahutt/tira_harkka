@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="MH-PC" name="logiikka.test.BittikarttaTest" tests="5" time="1.003" timestamp="2012-06-11T09:57:19">
+<testsuite errors="0" failures="0" hostname="MH-PC" name="logiikka.test.BittikarttaTest" tests="5" time="0.906" timestamp="2012-06-11T12:47:24">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="FI" />
@@ -448,10 +448,10 @@
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
   </properties>
-  <testcase classname="logiikka.test.BittikarttaTest" name="keltainenVariToimii" time="0.012" />
-  <testcase classname="logiikka.test.BittikarttaTest" name="punainenVariToimii" time="0.0050" />
-  <testcase classname="logiikka.test.BittikarttaTest" name="mustaVariToimii" time="0.0050" />
-  <testcase classname="logiikka.test.BittikarttaTest" name="valkoinenVariToimii" time="0.0050" />
+  <testcase classname="logiikka.test.BittikarttaTest" name="keltainenVariToimii" time="0.0090" />
+  <testcase classname="logiikka.test.BittikarttaTest" name="punainenVariToimii" time="0.0040" />
+  <testcase classname="logiikka.test.BittikarttaTest" name="mustaVariToimii" time="0.0040" />
+  <testcase classname="logiikka.test.BittikarttaTest" name="valkoinenVariToimii" time="0.0040" />
   <testcase classname="logiikka.test.BittikarttaTest" name="labyrintistaLoytyyKaikkiaMerkkejaOikeassaSuhteessa" time="0.0060" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

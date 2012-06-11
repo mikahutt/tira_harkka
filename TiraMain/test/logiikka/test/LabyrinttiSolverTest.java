@@ -106,6 +106,6 @@ public class LabyrinttiSolverTest {
 
     @Test
     public void dijkstranAlgoritmiPalauttaaOikeanPituuden() {
-        assertTrue("ois ollu: " + solveri.dijkstra(), solveri.dijkstra() == solveri.getParasReitti().size()-1);
+        assertTrue("ois ollu: " + solveri.dijkstra() + "," + (solveri.getParasReitti().length() - solveri.getParasReitti().kuinkaMontaMahtuu()), solveri.dijkstra() == (solveri.getParasReitti().length() - solveri.getParasReitti().kuinkaMontaMahtuu()-1));
     }
 }

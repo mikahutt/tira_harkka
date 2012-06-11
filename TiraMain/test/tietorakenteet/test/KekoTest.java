@@ -224,25 +224,25 @@ public class KekoTest {
         PriorityQueue<Koordinaatti> javaKeko = new PriorityQueue<Koordinaatti>(1, new KoordinaattiComparator());
         Keko omaKeko = new Keko(isoLuku);
         //Alustetaan javan priorityQueue koordinaateilla, tämän aika on testattu jo edellisessä.
-        for (int i = 0; i < isoLuku; i++) {
+        for (int i = 0; i < isoLuku/2; i++) {
             Koordinaatti testi = new Koordinaatti(1, 1, i, 'g');
             javaKeko.add(testi);
         }
         //Alustetaan oma keko koordinaateilla, tämän aika on myös testattu jo edellisessä.
-        for (int i = 0; i < isoLuku; i++) {
+        for (int i = 0; i < isoLuku/2; i++) {
             Koordinaatti testi = new Koordinaatti(1, 1, i, 'g');
             omaKeko.heapInsert(testi);
         }
 
         long aikaJavalleAlku = System.currentTimeMillis();
-        for (int i = 0; i < isoLuku; i++) {
+        for (int i = 0; i < isoLuku/2; i++) {
             javaKeko.poll();
         }
         long aikaJavalleLoppu = System.currentTimeMillis();
         double javanTulos = aikaJavalleLoppu - aikaJavalleAlku;
 
         long aikaOmalleAlku = System.currentTimeMillis();
-        for (int i = 0; i < isoLuku; i++) {
+        for (int i = 0; i < isoLuku/2; i++) {
             omaKeko.heapDelMin();
         }
         long aikaOmalleLoppu = System.currentTimeMillis();
@@ -284,25 +284,25 @@ public class KekoTest {
         PriorityQueue<Koordinaatti> javaKeko = new PriorityQueue<Koordinaatti>(1, new KoordinaattiComparator());
         Keko omaKeko = new Keko(isoLuku);
         //Alustetaan javan priorityQueue koordinaateilla, tämän aika on testattu jo edellisessä.
-        for (int i = isoLuku; i > 0; i--) {
+        for (int i = isoLuku/2; i > 0; i--) {
             Koordinaatti testi = new Koordinaatti(1, 1, i, 'g');
             javaKeko.add(testi);
         }
         //Alustetaan oma keko koordinaateilla, tämän aika on myös testattu jo edellisessä.
-        for (int i = isoLuku; i > 0; i--) {
+        for (int i = isoLuku/2; i > 0; i--) {
             Koordinaatti testi = new Koordinaatti(1, 1, i, 'g');
             omaKeko.heapInsert(testi);
         }
 
         long aikaJavalleAlku = System.currentTimeMillis();
-        for (int i = 0; i < isoLuku; i++) {
+        for (int i = 0; i < isoLuku/2; i++) {
             javaKeko.poll();
         }
         long aikaJavalleLoppu = System.currentTimeMillis();
         double javanTulos = aikaJavalleLoppu - aikaJavalleAlku;
 
         long aikaOmalleAlku = System.currentTimeMillis();
-        for (int i = 0; i < isoLuku; i++) {
+        for (int i = 0; i < isoLuku/2; i++) {
             omaKeko.heapDelMin();
         }
         long aikaOmalleLoppu = System.currentTimeMillis();

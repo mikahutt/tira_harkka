@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="MH-PC" name="logiikka.test.KoordinaattiTest" tests="1" time="0.13" timestamp="2012-06-11T09:57:22">
+<testsuite errors="0" failures="0" hostname="MH-PC" name="logiikka.test.KoordinaattiTest" tests="1" time="0.143" timestamp="2012-06-11T12:47:27">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="FI" />

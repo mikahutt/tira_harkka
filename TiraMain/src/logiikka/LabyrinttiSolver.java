@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 import tietorakenteet.Keko;
+import tietorakenteet.OmaArrayList;
 
 /**
  * "Kirjastoluokka, joka sisältää tällä hetkellä vain Dijkstran-algoritmin sekä
@@ -14,15 +15,16 @@ public class LabyrinttiSolver {
 
     private Labyrintti labyrintti;
     private Koordinaatti[][] koordinaatit;
-    private ArrayList<Koordinaatti> parasReitti;
+   // private ArrayList<Koordinaatti> parasReitti;
+    private OmaArrayList parasReitti;
     private HashMap<Koordinaatti, Koordinaatti> edeltajat;
     private boolean eukleides;
 
-    public ArrayList<Koordinaatti> getParasReitti() {
+    public OmaArrayList getParasReitti() {
         return parasReitti;
     }
 
-    public void setParasReitti(ArrayList parasReitti) {
+    public void setParasReitti(OmaArrayList parasReitti) {
         this.parasReitti = parasReitti;
     }
 
@@ -52,7 +54,7 @@ public class LabyrinttiSolver {
         // Dijkstran ydin, keko.
         Keko valekeko = new Keko();
 
-        parasReitti = new ArrayList();
+        parasReitti = new OmaArrayList();
 
         koordinaattienAlustus(koordinaatit);
         Koordinaatti aloitus = aloituksenEtsinta(koordinaatit);

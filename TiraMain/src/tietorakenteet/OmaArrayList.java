@@ -11,7 +11,7 @@ import logiikka.Koordinaatti;
  * Keko sisältää luokan KeonTaulukko, joka kapseloi sisäänsä tavallisen taulukon
  * joka sisältää koordinaatteja. Kun taulukko tulee täyteen, niin sen koko tuplataan.
  */
-public class KeonTaulukko {
+public class OmaArrayList {
 
     private Koordinaatti[] taulukko;
     private int maara;
@@ -22,7 +22,7 @@ public class KeonTaulukko {
      *
      * @param koko
      */
-    public KeonTaulukko(int koko) {
+    public OmaArrayList(int koko) {
         if (koko < 1) {
             taulukko = new Koordinaatti[100];
             maara = 100;
@@ -36,7 +36,7 @@ public class KeonTaulukko {
     /**
      * Parametriton konstruktori luo oletuksena sadan pituisen taulukon.
      */
-    public KeonTaulukko() {
+    public OmaArrayList() {
         taulukko = new Koordinaatti[100];
         maara = 100;
     }
@@ -63,8 +63,9 @@ public class KeonTaulukko {
                 kopio[j] = taulukko[j];
 
             }
+            maara = kopio.length-taulukko.length;
             taulukko = kopio;
-            maara = taulukko.length;
+            
         }
         maara--;
         taulukko[i] = k;
@@ -103,4 +104,10 @@ public class KeonTaulukko {
     public Koordinaatti haeIndeksista(int i) {
         return taulukko[i];
     }
+    
+    public void add(Koordinaatti koordinaatti) {
+        this.lisaa((this.length()-(this.kuinkaMontaMahtuu())), koordinaatti);
+    }
+    
+    
 }

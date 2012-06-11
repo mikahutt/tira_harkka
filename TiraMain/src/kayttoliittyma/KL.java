@@ -14,6 +14,7 @@ import logiikka.Bittikartta;
 import logiikka.JekkuTimer;
 import logiikka.Koordinaatti;
 import logiikka.LabyrinttiSolver;
+import tietorakenteet.OmaArrayList;
 
 /**
  *
@@ -85,8 +86,9 @@ public class KL implements Runnable {
 
     private void piirraParasReitti() {
         Graphics2D graffa = kartta.getKuva().createGraphics();
-        ArrayList<Koordinaatti> parhaat = solveri.getParasReitti();
-        for (Koordinaatti k : parhaat) {
+        OmaArrayList parhaat = solveri.getParasReitti();
+        for (int i = 0; i < parhaat.length();i++) {
+            Koordinaatti k = parhaat.haeIndeksista(i);
             if (k != null) {
                 graffa = kartta.getKuva().createGraphics();
                 graffa.setColor(Color.ORANGE);
