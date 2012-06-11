@@ -75,6 +75,8 @@ public class KL implements Runnable {
                     graffa.drawOval(j, i, 0, 0);
                     graffa.dispose();
                 }
+                
+               
 
             }
 
