@@ -30,7 +30,8 @@ public class LabyrinttiSolver {
 
     /**
      * Ottaa talteen parametrina saadun labyrintin. Luokan metodit käsittelevät
-     * juuri tätä labyrinttia.
+     * juuri tätä labyrinttia. Toisen parametrin ollessa true käytetään "euklidista metriikkaa"
+     * eli haku tapahtuu kahdeksaan eri suuntaan
      *
      * @param labyrintti
      */
