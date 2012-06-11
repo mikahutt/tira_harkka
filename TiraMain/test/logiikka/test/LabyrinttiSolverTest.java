@@ -106,6 +106,6 @@ public class LabyrinttiSolverTest {
 
     @Test
     public void dijkstranAlgoritmiPalauttaaJotainJarkevaa() {
-        assertTrue("ois ollu: " + solveri.dijkstra(), solveri.dijkstra() == 527);
+        assertTrue("ois ollu: " + solveri.dijkstra(), solveri.dijkstra() == 411);
     }
 }

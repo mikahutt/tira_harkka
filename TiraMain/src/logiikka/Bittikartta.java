@@ -24,8 +24,16 @@ public class Bittikartta {
     final static int MAALI = -1237980;
     private char[][] labyrintti;
     private int korkeus;
+
+    public void setKuva(BufferedImage kuva) {
+        this.kuva = kuva;
+    }
     private int leveys;
-    BufferedImage kuva;
+    private BufferedImage kuva;
+
+    public BufferedImage getKuva() {
+        return kuva;
+    }
     /**
      * Muodostaa parametrina saadusta tiedosto nimestä/polusta char[][] taulukon.
      * @param tiedosto 

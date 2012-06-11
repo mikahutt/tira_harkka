@@ -25,7 +25,7 @@ public class Main {
         Bittikartta kartta = new Bittikartta("ekaLaby.png");
         Labyrintti laby = new Labyrintti(kartta.getLabyrintti());
         LabyrinttiSolver solveri = new LabyrinttiSolver(laby);
-        KL kayttoliittyma = new KL(solveri);
+        KL kayttoliittyma = new KL(solveri,kartta);
         SwingUtilities.invokeLater(kayttoliittyma);
 //        Labyrintti laby = new Labyrintti();
 //        LabyrinttiSolver solveri = new LabyrinttiSolver(laby);
