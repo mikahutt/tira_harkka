@@ -34,6 +34,7 @@ public class LabyrinttiSolver {
      * eli haku tapahtuu kahdeksaan eri suuntaan
      *
      * @param labyrintti
+     * @param eukleides  
      */
     public LabyrinttiSolver(Labyrintti labyrintti, boolean eukleides) {
         this.labyrintti = labyrintti;
