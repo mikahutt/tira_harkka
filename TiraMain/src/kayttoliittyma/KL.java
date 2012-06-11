@@ -66,10 +66,6 @@ public class KL implements Runnable {
     private void piirraaDijkstraa() {
         Graphics2D graffa = kartta.getKuva().createGraphics();
         graffa.setColor(Color.BLUE);
-        //JekkuTimer timeri = new JekkuTimer();
-//        graffa.fillOval(100, 100, 50, 50);
-//        graffa.dispose();
-//        kuvaLabel.setIcon(new ImageIcon(kartta.getKuva()));
         for (int i = 0; i < koordinaatit.length; i++) {
             for (int j = 0; j < koordinaatit[0].length; j++) {
                 if (koordinaatit[i][j].isKayty()) {
@@ -77,7 +73,6 @@ public class KL implements Runnable {
                     graffa.setColor(Color.BLUE);
                     graffa.drawOval(j, i, 0, 0);
                     graffa.dispose();
-                    //timeri.odota(1000);
                 }
 
             }
@@ -91,11 +86,8 @@ public class KL implements Runnable {
     private void piirraParasReitti() {
         Graphics2D graffa = kartta.getKuva().createGraphics();
         ArrayList<Koordinaatti> parhaat = solveri.getParasReitti();
-        //int summa = 0;
         for (Koordinaatti k : parhaat) {
             if (k != null) {
-                //summa++;
-                //System.out.println(summa);
                 graffa = kartta.getKuva().createGraphics();
                 graffa.setColor(Color.ORANGE);
                 graffa.drawOval(k.getY(), k.getX(), 0, 0);

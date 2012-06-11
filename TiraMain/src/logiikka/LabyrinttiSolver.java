@@ -6,9 +6,9 @@ import java.util.PriorityQueue;
 import tietorakenteet.Keko;
 
 /**
- * "Kirjastoluokka, joka sisältää tällä hetkellä vain Dijkstran-algoritmin sekä koordinaattien 
- * luomisen ja taulukkojen alustamisen.
- * 
+ * "Kirjastoluokka, joka sisältää tällä hetkellä vain Dijkstran-algoritmin sekä
+ * koordinaattien luomisen ja taulukkojen alustamisen.
+ *
  */
 public class LabyrinttiSolver {
 
@@ -26,11 +26,14 @@ public class LabyrinttiSolver {
     }
 
     /**
-     * Ottaa talteen parametrina saadun labyrintin. Luokan metodit käsittelevät juuri tätä labyrinttia.
-     * @param labyrintti 
+     * Ottaa talteen parametrina saadun labyrintin. Luokan metodit käsittelevät
+     * juuri tätä labyrinttia.
+     *
+     * @param labyrintti
      */
     public LabyrinttiSolver(Labyrintti labyrintti) {
         this.labyrintti = labyrintti;
+        edeltajat = new HashMap();
     }
 
     /**
@@ -46,8 +49,7 @@ public class LabyrinttiSolver {
         koordinaatit = new Koordinaatti[labyrintti.labyrintinKorkeus()][labyrintti.labyrintinLeveys()];
         // Dijkstran ydin, keko.
         Keko valekeko = new Keko();
-        edeltajat = new HashMap();
-        
+
         parasReitti = new ArrayList();
 
         koordinaattienAlustus(koordinaatit);
@@ -57,16 +59,10 @@ public class LabyrinttiSolver {
         int montaLiikkumista = 0;
         while (!valekeko.isEmpty()) {
             Koordinaatti p = valekeko.heapDelMin();
-//            System.out.println(p.getX() + "," + p.getY());
-//            System.out.println(koordinaatit[p.getX()][p.getY()].getX() + "," + koordinaatit[p.getX()][p.getY()].getY());
-//            System.out.println("--------");
-            
-//            if (p.getPainoarvo() == 250) {
-//                break;
-//            }
+
             if (p.getMerkki() == 'L') {
                 montaLiikkumista = p.getPainoarvo();
-                asetaParasReitti(edeltajat,p);
+                asetaParasReitti(edeltajat, p);
                 break;
             }
             relaksoiKaikkiVierukset(p, koordinaatit, valekeko);
@@ -108,7 +104,7 @@ public class LabyrinttiSolver {
      *
      * Alustaa koordinaatit char-labyrintin mukaan, josta koordinaatille
      * asetetaan koordinaatit (ei tarvitse ja poistetaan), painoarvo ja merkki.
-     * 
+     *
      *
      * @param koordinaatit
      */
@@ -139,44 +135,31 @@ public class LabyrinttiSolver {
      * @param y
      */
     public void relaksoi(Keko valekeko, Koordinaatti[][] koordinaatit, Koordinaatti p, int x, int y) {
-        
-        
 
-//        if (onkoEpaKelpoSeuraaja(x, y, koordinaatit[x][y].isKayty(), koordinaatit)) {
-//            return;
-//        }
-        
-          if (onkoEpaKelpoSeuraaja(x, y, p.isKayty(), koordinaatit)) {
+        if (onkoEpaKelpoSeuraaja(x, y, p.isKayty(), koordinaatit)) {
             return;
         }
-        
-//        if (koordinaatit[x][y].getMerkki() == 'A') {
-//            koordinaatit[x][y].setKayty(true);
-//            return;
-//        }
 
         int uusiE = p.getPainoarvo() + 1;
-
 
         int vanhaE = koordinaatit[x][y].getPainoarvo();
         if (uusiE < vanhaE) {
             char valiaikainen = koordinaatit[x][y].getMerkki();
             koordinaatit[x][y] = new Koordinaatti(x, y, uusiE, valiaikainen);
-            edeltajat.put(koordinaatit[x][y],p);
-//            parasReitti[koordinaatit[x][y].getPainoarvo()] = koordinaatit[x][y];
-           // koordinaatit[x][y].setKayty(true);
+            edeltajat.put(koordinaatit[x][y], p);
             valekeko.heapInsert(koordinaatit[x][y]);
         }
     }
 
     /**
-     * Tarkastaa onko parametrina annetut koordinaatit taulukossa ja onko niihin liittyvässä koordinaatissa
-     * jo vierailtu.
+     * Tarkastaa onko parametrina annetut koordinaatit taulukossa ja onko niihin
+     * liittyvässä koordinaatissa jo vierailtu.
+     *
      * @param x
      * @param y
      * @param kayty
      * @param koordinaatit
-     * @return 
+     * @return
      */
     public boolean onkoEpaKelpoSeuraaja(int x, int y, boolean kayty, Koordinaatti[][] koordinaatit) {
         return x < 0 || y < 0 || x >= koordinaatit.length || y >= koordinaatit[0].length || kayty;
@@ -200,7 +183,6 @@ public class LabyrinttiSolver {
         if (!seina(koordinaatit, p.getX(), p.getY() + 1)) {
             relaksoi(valekeko, koordinaatit, p, p.getX(), p.getY() + 1);
         }
-       // p.setKayty(true);
     }
 
     private boolean seina(Koordinaatti[][] koordinaatit, int x, int y) {
@@ -210,7 +192,7 @@ public class LabyrinttiSolver {
     private void asetaParasReitti(HashMap<Koordinaatti, Koordinaatti> edeltajat, Koordinaatti maali) {
         Koordinaatti askel = maali;
         parasReitti.add(askel);
-        
+
         while (edeltajat.get(askel) != null) {
             askel = edeltajat.get(askel);
             parasReitti.add(askel);
