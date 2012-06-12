@@ -1,14 +1,12 @@
 package logiikka;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.PriorityQueue;
 import tietorakenteet.Keko;
 import tietorakenteet.OmaArrayList;
+import tietorakenteet.OmaHashMap;
 
 /**
- * "Kirjastoluokka, joka sisältää tällä hetkellä vain Dijkstran-algoritmin sekä
- * koordinaattien luomisen ja taulukkojen alustamisen.
+ * "Kirjastoluokka, joka sisältää metodeja labyrintin läpikäymiseen
  *
  */
 public class LabyrinttiSolver {
@@ -17,7 +15,8 @@ public class LabyrinttiSolver {
     private Koordinaatti[][] koordinaatit;
     private int suoKerroin;
     private OmaArrayList parasReitti;
-    private HashMap<Koordinaatti, Koordinaatti> edeltajat;
+    private HashMap<Koordinaatti,Koordinaatti> edeltajat;
+    //private OmaHashMap edeltajat;
 
     public boolean isEukleides() {
         return eukleides;
@@ -43,7 +42,7 @@ public class LabyrinttiSolver {
      *
      * @param labyrintti
      * @param eukleides
-     * @param suoKerroin  
+     * @param suoKerroin
      */
     public LabyrinttiSolver(Labyrintti labyrintti, boolean eukleides, int suoKerroin) {
         this.labyrintti = labyrintti;
@@ -119,7 +118,8 @@ public class LabyrinttiSolver {
     /**
      *
      * Alustaa koordinaatit char-labyrintin mukaan, josta koordinaatille
-     * asetetaan koordinaatit, painoarvo ja merkki. Tämä on tyylikkäästi kovakoodattu.
+     * asetetaan koordinaatit, painoarvo ja merkki. Tämä on tyylikkäästi
+     * kovakoodattu.
      *
      *
      * @param koordinaatit
@@ -153,7 +153,7 @@ public class LabyrinttiSolver {
      * @param y
      */
     public void relaksoi(Keko valekeko, Koordinaatti[][] koordinaatit, Koordinaatti p, int x, int y) {
-        Koordinaatti tutkittava = koordinaatit[x][y]; 
+        Koordinaatti tutkittava = koordinaatit[x][y];
         if (onkoEpaKelpoSeuraaja(x, y, koordinaatit)) {
             return;
         }
@@ -162,12 +162,12 @@ public class LabyrinttiSolver {
         if (tutkittava.getMerkki() == 'S') {
             uusiE = p.getPainoarvo() + suoKerroin;
         }
-        
+
         //Tasoitetaan euklidista etäisyyttä paremmaksi
         if (eukleides && Math.abs((p.getX() + p.getY()) - (tutkittava.getX() + tutkittava.getY())) > 1) {
             uusiE *= 1.4;
         }
-        
+
         int vanhaE = tutkittava.getPainoarvo();
         if (uusiE < vanhaE) {
             char valiaikainen = tutkittava.getMerkki();
@@ -230,13 +230,24 @@ public class LabyrinttiSolver {
         return koordinaatit[x][y].getMerkki() == '#';
     }
 
-    private void asetaParasReitti(HashMap<Koordinaatti, Koordinaatti> edeltajat, Koordinaatti maali) {
+    private void asetaParasReitti(HashMap<Koordinaatti,Koordinaatti> edeltajat, Koordinaatti maali) {
         Koordinaatti askel = maali;
         parasReitti.add(askel);
-
+        
         while (edeltajat.get(askel) != null) {
             askel = edeltajat.get(askel);
             parasReitti.add(askel);
         }
+
+    }
+        private void asetaParasReitti(OmaHashMap edeltajat, Koordinaatti maali) {
+        Koordinaatti askel = maali;
+        parasReitti.add(askel);
+        
+        while (edeltajat.get(askel) != null) {
+            askel = edeltajat.get(askel);
+            parasReitti.add(askel);
+        }
+
     }
 }
