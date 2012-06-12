@@ -39,7 +39,7 @@ public class LabyrinttiSolverTest {
         //Labyrintti laby = new Labyrintti();
         Bittikartta mappi = new Bittikartta("ekaLaby.png");
         Labyrintti laby = new Labyrintti(mappi.getLabyrintti());
-        solveri = new LabyrinttiSolver(laby,false);
+        solveri = new LabyrinttiSolver(laby,false,5);
         koordinaatit = new Koordinaatti[laby.labyrintinKorkeus()][laby.labyrintinLeveys()];
         solveri.koordinaattienAlustus(koordinaatit);
     }
@@ -81,10 +81,8 @@ public class LabyrinttiSolverTest {
 
     @Test
     public void onkoEpaKelpoSeuraajaToimii() {
-        assertFalse(solveri.onkoEpaKelpoSeuraaja(2, 3, false, koordinaatit));
-        assertTrue(solveri.onkoEpaKelpoSeuraaja(2, 5, true, koordinaatit));
-        assertTrue(solveri.onkoEpaKelpoSeuraaja(-1, 5, false, koordinaatit));
-        assertTrue(solveri.onkoEpaKelpoSeuraaja(2, 115, true, koordinaatit));
+        assertFalse(solveri.onkoEpaKelpoSeuraaja(2, 3,  koordinaatit));
+        assertTrue(solveri.onkoEpaKelpoSeuraaja(-1, 5,  koordinaatit));
     }
 
     /**

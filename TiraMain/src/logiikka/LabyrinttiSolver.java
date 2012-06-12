@@ -15,9 +15,13 @@ public class LabyrinttiSolver {
 
     private Labyrintti labyrintti;
     private Koordinaatti[][] koordinaatit;
-   // private ArrayList<Koordinaatti> parasReitti;
+    private int suoKerroin;
     private OmaArrayList parasReitti;
     private HashMap<Koordinaatti, Koordinaatti> edeltajat;
+
+    public boolean isEukleides() {
+        return eukleides;
+    }
     private boolean eukleides;
 
     public OmaArrayList getParasReitti() {
@@ -30,16 +34,18 @@ public class LabyrinttiSolver {
 
     /**
      * Ottaa talteen parametrina saadun labyrintin. Luokan metodit käsittelevät
-     * juuri tätä labyrinttia. Toisen parametrin ollessa true käytetään "euklidista metriikkaa"
-     * eli haku tapahtuu kahdeksaan eri suuntaan
+     * juuri tätä labyrinttia. Toisen parametrin ollessa true käytetään
+     * "euklidista metriikkaa" eli haku tapahtuu kahdeksaan eri suuntaan
      *
      * @param labyrintti
-     * @param eukleides  
+     * @param eukleides
+     * @param suoKerroin  
      */
-    public LabyrinttiSolver(Labyrintti labyrintti, boolean eukleides) {
+    public LabyrinttiSolver(Labyrintti labyrintti, boolean eukleides, int suoKerroin) {
         this.labyrintti = labyrintti;
         edeltajat = new HashMap();
         this.eukleides = eukleides;
+        this.suoKerroin = suoKerroin;
     }
 
     /**
@@ -123,6 +129,8 @@ public class LabyrinttiSolver {
                     koordinaatit[i][j] = new Koordinaatti(i, j, 0, 'A');
                 } else if (labyrintti.getLabyrintti()[i][j] == 'L') {
                     koordinaatit[i][j] = new Koordinaatti(i, j, 100000000, 'L');
+                } else if (labyrintti.getLabyrintti()[i][j] == 'S') {
+                    koordinaatit[i][j] = new Koordinaatti(i, j, 20000, 'S');
                 } else {
                     koordinaatit[i][j] = new Koordinaatti(i, j, 10000, '.');
                 }
@@ -142,12 +150,15 @@ public class LabyrinttiSolver {
      */
     public void relaksoi(Keko valekeko, Koordinaatti[][] koordinaatit, Koordinaatti p, int x, int y) {
 
-        if (onkoEpaKelpoSeuraaja(x, y, p.isKayty(), koordinaatit)) {
+        if (onkoEpaKelpoSeuraaja(x, y, koordinaatit)) {
             return;
         }
 
         int uusiE = p.getPainoarvo() + 1;
-
+        if (koordinaatit[x][y].getMerkki() == 'S') {
+            uusiE = p.getPainoarvo() + suoKerroin;
+        }
+        
         int vanhaE = koordinaatit[x][y].getPainoarvo();
         if (uusiE < vanhaE) {
             char valiaikainen = koordinaatit[x][y].getMerkki();
@@ -167,8 +178,8 @@ public class LabyrinttiSolver {
      * @param koordinaatit
      * @return
      */
-    public boolean onkoEpaKelpoSeuraaja(int x, int y, boolean kayty, Koordinaatti[][] koordinaatit) {
-        return x < 0 || y < 0 || x >= koordinaatit.length || y >= koordinaatit[0].length || kayty;
+    public boolean onkoEpaKelpoSeuraaja(int x, int y, Koordinaatti[][] koordinaatit) {
+        return x < 0 || y < 0 || x >= koordinaatit.length || y >= koordinaatit[0].length;
     }
 
     /**

@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 import logiikka.Bittikartta;
@@ -20,7 +22,7 @@ import tietorakenteet.OmaArrayList;
  *
  * Ohjelman käyttöliittymä. Tästä tullee kevyt graafinen liittymä.
  */
-public class KL implements Runnable {
+public class KL implements Runnable,ActionListener {
 
     private LabyrinttiSolver solveri;
     private JFrame frame;
@@ -28,6 +30,7 @@ public class KL implements Runnable {
     private JPanel kuvaPaneeli;
     private Bittikartta kartta;
     private Koordinaatti[][] koordinaatit;
+    private JButton simuloi;
 
     /**
      * Käyttöliitymä saa parametrina LabyrinttiSolver olion, jonka kautta se
@@ -43,25 +46,36 @@ public class KL implements Runnable {
     }
 
     public void run() {
-        frame = new JFrame("Magee Labyrintti");
-        frame.setPreferredSize(new Dimension(500, 600));
+        String teksti;
+       if (solveri.isEukleides()) {
+           teksti = "Euklidinen metriikka";
+       }else {
+           teksti = "Taksikuski";
+       }
+       
+        frame = new JFrame(teksti);
 
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+       // frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         luoKomponentit(frame.getContentPane());
 
-        frame.pack();
-        frame.setVisible(true);
-
-        piirraaDijkstraa();
     }
 
     private void luoKomponentit(Container contentPane) {
+        BoxLayout layout = new BoxLayout(contentPane, BoxLayout.Y_AXIS);
+        contentPane.setLayout(layout);
+        
         kuvaPaneeli = new JPanel();
         kuvaLabel = new JLabel(new ImageIcon(kartta.getKuva()));
         kuvaPaneeli.add(kuvaLabel);
-        contentPane.add(kuvaPaneeli);
+        contentPane.add(kuvaPaneeli); 
+                
+        simuloi = new JButton("Simuloi");
+        simuloi.addActionListener(this);
+        contentPane.add(simuloi);
 
+        frame.pack();
+        frame.setVisible(true);
     }
 
     private void piirraaDijkstraa() {
@@ -72,17 +86,15 @@ public class KL implements Runnable {
                 if (koordinaatit[i][j].isKayty()) {
                     graffa = kartta.getKuva().createGraphics();
                     graffa.setColor(Color.BLUE);
+                    if (koordinaatit[i][j].getMerkki() == 'S') {
+                        graffa.setColor(Color.CYAN);
+                    }
                     graffa.drawOval(j, i, 0, 0);
                     graffa.dispose();
                 }
-                
-               
-
             }
-
         }
-
-        kuvaLabel.paint(graffa);
+        kuvaLabel.setIcon(new ImageIcon(kartta.getKuva()));
         piirraParasReitti();
     }
 
@@ -99,5 +111,9 @@ public class KL implements Runnable {
             }
         }
         kuvaLabel.paint(graffa);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        piirraaDijkstraa();
     }
 }

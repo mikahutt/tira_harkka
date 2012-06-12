@@ -10,7 +10,8 @@ import static org.junit.Assert.*;
 
 /**
  *
- * Nämä testit olivat todella tärkeitä, sillä alkuperäisen A-star materiaalin RGB-arvot olivat väärin!
+ * Nämä testit olivat todella tärkeitä, sillä alkuperäisen A-star materiaalin
+ * RGB-arvot olivat väärin!
  */
 public class BittikarttaTest {
 
@@ -18,6 +19,7 @@ public class BittikarttaTest {
     Bittikartta keltainen;
     Bittikartta punainen;
     Bittikartta valkoinen;
+    Bittikartta vihrea;
     Bittikartta labyrintti;
     int korkeus;
     int leveys;
@@ -32,6 +34,7 @@ public class BittikarttaTest {
         valkoinen = new Bittikartta("labyValkoinen.png");
         keltainen = new Bittikartta("labyKeltanen.png");
         punainen = new Bittikartta("labyPunainen.png");
+        vihrea = new Bittikartta("labyvihrea.png");
         korkeus = punainen.getLabyrintti().length;
         leveys = punainen.getLabyrintti()[0].length;
     }
@@ -57,9 +60,7 @@ public class BittikarttaTest {
         for (int i = 0; i < leveys; i++) {
             for (int j = 0; j < korkeus; j++) {
                 assertTrue(keltainen.getLabyrintti()[j][i] == 'A');
-
             }
-
         }
     }
 
@@ -68,9 +69,7 @@ public class BittikarttaTest {
         for (int i = 0; i < leveys; i++) {
             for (int j = 0; j < korkeus; j++) {
                 assertTrue(punainen.getLabyrintti()[j][i] == 'L');
-
             }
-
         }
     }
 
@@ -79,9 +78,7 @@ public class BittikarttaTest {
         for (int i = 0; i < leveys; i++) {
             for (int j = 0; j < korkeus; j++) {
                 assertTrue(musta.getLabyrintti()[j][i] == '#');
-
             }
-
         }
     }
 
@@ -90,9 +87,16 @@ public class BittikarttaTest {
         for (int i = 0; i < leveys; i++) {
             for (int j = 0; j < korkeus; j++) {
                 assertTrue(valkoinen.getLabyrintti()[j][i] == '.');
-
             }
+        }
+    }
 
+    @Test
+    public void vihreaVariToimii() {
+        for (int i = 0; i < leveys; i++) {
+            for (int j = 0; j < korkeus; j++) {
+                assertTrue(vihrea.getLabyrintti()[j][i] == 'S');
+            }
         }
     }
 

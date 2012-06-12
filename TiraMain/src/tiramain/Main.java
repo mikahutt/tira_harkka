@@ -5,6 +5,8 @@
 
 package tiramain;
 
+import kayttoliittyma.Aloitus;
+import java.util.Scanner;
 import javax.swing.SwingUtilities;
 import kayttoliittyma.KL;
 import logiikka.Bittikartta;
@@ -18,15 +20,16 @@ import logiikka.LabyrinttiSolver;
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
-        Bittikartta kartta = new Bittikartta("ekaLaby.png");
-        Labyrintti laby = new Labyrintti(kartta.getLabyrintti());
-        LabyrinttiSolver solveri = new LabyrinttiSolver(laby,true);
-        KL kayttoliittyma = new KL(solveri,kartta);
-        SwingUtilities.invokeLater(kayttoliittyma);
+        Aloitus aloitus = new Aloitus();
+        SwingUtilities.invokeLater(aloitus);
+        
+//        Bittikartta kartta = new Bittikartta("suoLaby.png");
+//        Labyrintti laby = new Labyrintti(kartta.getLabyrintti());
+//        LabyrinttiSolver solveri = new LabyrinttiSolver(laby,false, 5);
+//        KL kayttoliittyma = new KL(solveri,kartta);
+//        SwingUtilities.invokeLater(kayttoliittyma);
 
         }
     }

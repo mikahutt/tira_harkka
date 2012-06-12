@@ -20,6 +20,7 @@ public class Bittikartta {
 
     final static int MUSTA = -16777216;
     final static int VALKEA = -1;
+    final static int SUO = -14503604;
     final static int LAHTO = -3584;
     final static int MAALI = -1237980;
     private char[][] labyrintti;
@@ -91,6 +92,8 @@ public class Bittikartta {
                     labyrintti[j][i] = 'A';
                 } else if (pikseli == MAALI) {
                     labyrintti[j][i] = 'L';
+                } else if (pikseli == SUO) {
+                    labyrintti[j][i] = 'S';
                 } else {
                     labyrintti[j][i] = '.';
                 }
