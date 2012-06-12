@@ -32,6 +32,10 @@ public class LabyrinttiSolver {
         this.parasReitti = parasReitti;
     }
 
+    public int getSuoKerroin() {
+        return suoKerroin;
+    }
+
     /**
      * Ottaa talteen parametrina saadun labyrintin. Luokan metodit käsittelevät
      * juuri tätä labyrinttia. Toisen parametrin ollessa true käytetään
@@ -115,7 +119,7 @@ public class LabyrinttiSolver {
     /**
      *
      * Alustaa koordinaatit char-labyrintin mukaan, josta koordinaatille
-     * asetetaan koordinaatit (ei tarvitse ja poistetaan), painoarvo ja merkki.
+     * asetetaan koordinaatit, painoarvo ja merkki. Tämä on tyylikkäästi kovakoodattu.
      *
      *
      * @param koordinaatit
@@ -149,19 +153,24 @@ public class LabyrinttiSolver {
      * @param y
      */
     public void relaksoi(Keko valekeko, Koordinaatti[][] koordinaatit, Koordinaatti p, int x, int y) {
-
+        Koordinaatti tutkittava = koordinaatit[x][y]; 
         if (onkoEpaKelpoSeuraaja(x, y, koordinaatit)) {
             return;
         }
 
         int uusiE = p.getPainoarvo() + 1;
-        if (koordinaatit[x][y].getMerkki() == 'S') {
+        if (tutkittava.getMerkki() == 'S') {
             uusiE = p.getPainoarvo() + suoKerroin;
         }
         
-        int vanhaE = koordinaatit[x][y].getPainoarvo();
+        //Tasoitetaan euklidista etäisyyttä paremmaksi
+        if (eukleides && Math.abs((p.getX() + p.getY()) - (tutkittava.getX() + tutkittava.getY())) > 1) {
+            uusiE *= 1.4;
+        }
+        
+        int vanhaE = tutkittava.getPainoarvo();
         if (uusiE < vanhaE) {
-            char valiaikainen = koordinaatit[x][y].getMerkki();
+            char valiaikainen = tutkittava.getMerkki();
             koordinaatit[x][y] = new Koordinaatti(x, y, uusiE, valiaikainen);
             edeltajat.put(koordinaatit[x][y], p);
             valekeko.heapInsert(koordinaatit[x][y]);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="MH-PC" name="tietorakenteet.test.OmaArrayListTest" tests="9" time="0.286" timestamp="2012-06-12T07:52:10">
+<testsuite errors="0" failures="0" hostname="MH-PC" name="tietorakenteet.test.OmaArrayListTest" tests="9" time="0.338" timestamp="2012-06-12T08:13:44">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="FI" />
@@ -450,9 +450,9 @@
   <testcase classname="tietorakenteet.test.OmaArrayListTest" name="tayteenTaulukkoonEiMahduEnaa" time="0.0" />
   <testcase classname="tietorakenteet.test.OmaArrayListTest" name="tuplattuunTaulukkoonMahtuu" time="0.0010" />
   <testcase classname="tietorakenteet.test.OmaArrayListTest" name="lisaaminenToimii" time="0.0010" />
-  <testcase classname="tietorakenteet.test.OmaArrayListTest" name="lisaaminenToimiiRajaArvoilla" time="0.0" />
-  <testcase classname="tietorakenteet.test.OmaArrayListTest" name="lisaaminenToimiiRajaArvoaYhtaSuuremmalla" time="0.0050" />
-  <testcase classname="tietorakenteet.test.OmaArrayListTest" name="indeksitonLisaaminen" time="0.0020" />
+  <testcase classname="tietorakenteet.test.OmaArrayListTest" name="lisaaminenToimiiRajaArvoilla" time="0.0020" />
+  <testcase classname="tietorakenteet.test.OmaArrayListTest" name="lisaaminenToimiiRajaArvoaYhtaSuuremmalla" time="0.01" />
+  <testcase classname="tietorakenteet.test.OmaArrayListTest" name="indeksitonLisaaminen" time="0.0050" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -13,7 +13,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 import logiikka.Bittikartta;
-import logiikka.JekkuTimer;
 import logiikka.Koordinaatti;
 import logiikka.LabyrinttiSolver;
 import tietorakenteet.OmaArrayList;
@@ -53,11 +52,9 @@ public class KL implements Runnable,ActionListener {
            teksti = "Taksikuski";
        }
        
-        frame = new JFrame(teksti);
+        frame = new JFrame(teksti + ", suokerroin: " + solveri.getSuoKerroin());
 
-       // frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-        luoKomponentit(frame.getContentPane());
+      luoKomponentit(frame.getContentPane());
 
     }
 

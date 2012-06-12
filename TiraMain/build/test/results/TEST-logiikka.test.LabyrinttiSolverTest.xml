@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="MH-PC" name="logiikka.test.LabyrinttiSolverTest" tests="9" time="1.261" timestamp="2012-06-12T07:52:01">
+<testsuite errors="0" failures="0" hostname="MH-PC" name="logiikka.test.LabyrinttiSolverTest" tests="9" time="1.215" timestamp="2012-06-12T08:13:35">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="FI" />
@@ -444,15 +444,15 @@
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
   </properties>
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="oikeenKokoinenLabyrintti" time="0.122" />
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="koordinaattienAlustuksenAloituspaikkaToimii" time="0.073" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="oikeenKokoinenLabyrintti" time="0.137" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="koordinaattienAlustuksenAloituspaikkaToimii" time="0.06" />
   <testcase classname="logiikka.test.LabyrinttiSolverTest" name="mustaOnRisuaitaa" time="0.044" />
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="koordinaattienAlustusJaAloituksenPainoarvo" time="0.095" />
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="koordinaattienAlustuksenLopetuspaikkaToimii" time="0.049" />
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="aloituksenEtsintaToimii" time="0.055" />
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="onkoEpaKelpoSeuraajaToimii" time="0.135" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="koordinaattienAlustusJaAloituksenPainoarvo" time="0.079" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="koordinaattienAlustuksenLopetuspaikkaToimii" time="0.036" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="aloituksenEtsintaToimii" time="0.035" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="onkoEpaKelpoSeuraajaToimii" time="0.09" />
   <testcase classname="logiikka.test.LabyrinttiSolverTest" name="relaksoidaanJotainKoordinaattia" time="0.034" />
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="dijkstranAlgoritmiPalauttaaOikeanPituuden" time="0.51" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="dijkstranAlgoritmiPalauttaaOikeanPituuden" time="0.502" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
