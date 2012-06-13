@@ -165,7 +165,7 @@ public class LabyrinttiSolver {
 
         //Tasoitetaan euklidista etäisyyttä paremmaksi
         if (eukleides && Math.abs((p.getX() + p.getY()) - (tutkittava.getX() + tutkittava.getY())) > 1) {
-            uusiE *= 1.4;
+            uusiE *= 1.42;
         }
 
         int vanhaE = tutkittava.getPainoarvo();
