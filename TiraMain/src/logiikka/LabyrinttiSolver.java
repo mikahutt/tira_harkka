@@ -15,8 +15,8 @@ public class LabyrinttiSolver {
     private Koordinaatti[][] koordinaatit;
     private int suoKerroin;
     private OmaArrayList parasReitti;
-    private HashMap<Koordinaatti,Koordinaatti> edeltajat;
-    //private OmaHashMap edeltajat;
+    //private HashMap<Koordinaatti,Koordinaatti> edeltajat;
+    private OmaHashMap edeltajat;
 
     public boolean isEukleides() {
         return eukleides;
@@ -46,7 +46,7 @@ public class LabyrinttiSolver {
      */
     public LabyrinttiSolver(Labyrintti labyrintti, boolean eukleides, int suoKerroin) {
         this.labyrintti = labyrintti;
-        edeltajat = new HashMap();
+        edeltajat = new OmaHashMap(20000000);
         this.eukleides = eukleides;
         this.suoKerroin = suoKerroin;
     }

@@ -12,7 +12,9 @@ public class OmaHashMap {
 
     public void put(Koordinaatti avain, Koordinaatti arvo) {
         int hash = avain.hashCode();
-        arvot[hash % koko()] = arvo;
+        if (arvot[hash % koko()] == null) {
+            arvot[hash % koko()] = arvo;
+        }
     }
 
     public Koordinaatti get(Koordinaatti avain) {
