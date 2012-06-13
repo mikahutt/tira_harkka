@@ -30,7 +30,8 @@ public class LabyrinttiSolver {
 
     /**
      * Palauttaa Dijkstran-algoritmin löytämän parhaan reitin.
-     * @return 
+     *
+     * @return
      */
     public OmaArrayList getParasReitti() {
         return parasReitti;
@@ -38,16 +39,19 @@ public class LabyrinttiSolver {
 
     /**
      * Asettaa parhaan reitin.
-     * @param parasReitti 
+     *
+     * @param parasReitti
      */
     public void setParasReitti(OmaArrayList parasReitti) {
         this.parasReitti = parasReitti;
     }
 
     /**
-     * Palauttaa labyrinttiin liittyvän suokertoimen, eli tiedon siitä, kuinka paljon enemmän
-     * suolla kulkeminen "maksaa" suhteessa tavalliseen liikkumisalueeseen.
-     * @return 
+     * Palauttaa labyrinttiin liittyvän suokertoimen, eli tiedon siitä, kuinka
+     * paljon enemmän suolla kulkeminen "maksaa" suhteessa tavalliseen
+     * liikkumisalueeseen.
+     *
+     * @return
      */
     public int getSuoKerroin() {
         return suoKerroin;
@@ -109,8 +113,10 @@ public class LabyrinttiSolver {
     }
 
     /**
-     * Palauttaa luokan sisältämän koordinaatti-taulukon, joka on muodostettu parametrina saadusta labyrintista.
-     * @return 
+     * Palauttaa luokan sisältämän koordinaatti-taulukon, joka on muodostettu
+     * parametrina saadusta labyrintista.
+     *
+     * @return
      */
     public Koordinaatti[][] getKoordinaatit() {
         return koordinaatit;
@@ -118,7 +124,8 @@ public class LabyrinttiSolver {
 
     /**
      * Asettaa luokan sisäisen koordinaatti-taulukon.
-     * @param koordinaatit 
+     *
+     * @param koordinaatit
      */
     public void setKoordinaatit(Koordinaatti[][] koordinaatit) {
         this.koordinaatit = koordinaatit;
@@ -163,6 +170,10 @@ public class LabyrinttiSolver {
                     koordinaatit[i][j] = new Koordinaatti(i, j, 100000000, 'L');
                 } else if (labyrintti.getLabyrintti()[i][j] == 'S') {
                     koordinaatit[i][j] = new Koordinaatti(i, j, 20000, 'S');
+                } else if (labyrintti.getLabyrintti()[i][j] == 'D') {
+                    koordinaatit[i][j] = new Koordinaatti(i, j, 20000, 'D');
+                } else if (labyrintti.getLabyrintti()[i][j] == 'K') {
+                    koordinaatit[i][j] = new Koordinaatti(i, j, 20000, 'K');
                 } else {
                     koordinaatit[i][j] = new Koordinaatti(i, j, 10000, '.');
                 }
@@ -182,7 +193,7 @@ public class LabyrinttiSolver {
      */
     public void relaksoi(Keko valekeko, Koordinaatti[][] koordinaatit, Koordinaatti p, int x, int y) {
         Koordinaatti tutkittava = koordinaatit[x][y];
-        if (onkoEpaKelpoSeuraaja(x, y, koordinaatit)) {
+        if (onkoEpaKelpoSeuraaja(x, y, koordinaatit) || tutkittava.getMerkki() == 'D') {
             return;
         }
 
@@ -259,7 +270,6 @@ public class LabyrinttiSolver {
         return koordinaatit[x][y].getMerkki() == '#';
     }
 
-
     private void asetaParasReitti(OmaHashMap edeltajat, Koordinaatti maali) {
         Koordinaatti askel = maali;
         parasReitti.add(askel);
@@ -270,4 +280,13 @@ public class LabyrinttiSolver {
         }
 
     }
+    
+    /*
+     * public void aStar() {
+     *      
+     * 
+     * 
+     * 
+     * 
+     */
 }

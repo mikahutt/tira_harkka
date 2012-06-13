@@ -11,15 +11,18 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * Tämä luokka muuttaa paintilla piirrettyjä labyrintteja Labyrintti-luokalle syötäväksi.
+ * Tämä luokka muuttaa paintilla piirrettyjä labyrintteja Labyrintti-luokalle
+ * syötäväksi.
  */
 public class Bittikartta {
 
     final static int MUSTA = -16777216;
     final static int VALKEA = -1;
-    final static int SUO = -14503604;
-    final static int LAHTO = -3584;
-    final static int MAALI = -1237980;
+    final static int SUO = -14503604; // vihreä
+    final static int LAHTO = -3584; // keltainen
+    final static int MAALI = -1237980; // punainen
+    final static int OVI = -20791; //pinkki
+    final static int AVAIN = -6075996; //lila
     private char[][] labyrintti;
     private int korkeus;
     private int leveys;
@@ -27,7 +30,8 @@ public class Bittikartta {
 
     /**
      * Asettaa Bittikartalle kuvan
-     * @param kuva 
+     *
+     * @param kuva
      */
     public void setKuva(BufferedImage kuva) {
         this.kuva = kuva;
@@ -35,14 +39,18 @@ public class Bittikartta {
 
     /**
      * Palauttaa bittikartan sisältämän kuvan.
-     * @return 
+     *
+     * @return
      */
     public BufferedImage getKuva() {
         return kuva;
     }
+
     /**
-     * Muodostaa parametrina saadusta tiedosto nimestä/polusta char[][] taulukon.
-     * @param tiedosto 
+     * Muodostaa parametrina saadusta tiedosto nimestä/polusta char[][]
+     * taulukon.
+     *
+     * @param tiedosto
      */
     public Bittikartta(String tiedosto) {
         kuva = null;
@@ -56,13 +64,15 @@ public class Bittikartta {
             System.exit(0);
 
         }
-        
+
         teeLabyrintti(kuva);
     }
 
     /**
-     * Palauttaa kuvasta luodun 2-ulotteisen char-taulukon, jonka voi antaa Labyrintti luokan konstruktorille.
-     * @return 
+     * Palauttaa kuvasta luodun 2-ulotteisen char-taulukon, jonka voi antaa
+     * Labyrintti luokan konstruktorille.
+     *
+     * @return
      */
     public char[][] getLabyrintti() {
         return labyrintti;
@@ -99,6 +109,10 @@ public class Bittikartta {
                     labyrintti[j][i] = 'L';
                 } else if (pikseli == SUO) {
                     labyrintti[j][i] = 'S';
+                } else if (pikseli == AVAIN) {
+                    labyrintti[j][i] = 'K';
+                } else if (pikseli == OVI) {
+                    labyrintti[j][i] = 'D';
                 } else {
                     labyrintti[j][i] = '.';
                 }

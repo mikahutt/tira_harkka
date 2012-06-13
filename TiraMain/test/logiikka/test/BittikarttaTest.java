@@ -21,6 +21,8 @@ public class BittikarttaTest {
     Bittikartta valkoinen;
     Bittikartta vihrea;
     Bittikartta labyrintti;
+    Bittikartta lila;
+    Bittikartta pinkki;
     int korkeus;
     int leveys;
 
@@ -35,6 +37,8 @@ public class BittikarttaTest {
         keltainen = new Bittikartta("labyKeltanen.png");
         punainen = new Bittikartta("labyPunainen.png");
         vihrea = new Bittikartta("labyvihrea.png");
+        lila = new Bittikartta("labyLila.png");
+        pinkki = new Bittikartta("labyPinkki.png");
         korkeus = punainen.getLabyrintti().length;
         leveys = punainen.getLabyrintti()[0].length;
     }
@@ -62,6 +66,16 @@ public class BittikarttaTest {
                 assertTrue(keltainen.getLabyrintti()[j][i] == 'A');
             }
         }
+    }
+
+    @Test
+    public void pinkkiVariToimii() {
+        assertTrue("" + pinkki.getKuva().getRGB(5, 5), pinkki.getKuva().getRGB(5, 5) == -20791);
+    }
+
+    @Test
+    public void lilaVariToimii() {
+        assertTrue("" + lila.getKuva().getRGB(5, 5), lila.getKuva().getRGB(5, 5) == -6075996);
     }
 
     @Test
