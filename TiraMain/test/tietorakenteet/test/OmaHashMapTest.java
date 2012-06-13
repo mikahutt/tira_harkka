@@ -25,17 +25,13 @@ public class OmaHashMapTest {
 
     @Before
     public void setUp() {
-        map = new OmaHashMap(10000000);
+        map = new OmaHashMap(1000000);
     }
 
     @After
     public void tearDown() {
     }
     
-    @Test
-    public void ekaTesti() {
-        assertTrue(true);
-    }
     
     @Test
     public void lisaaKoordinaatti() {
@@ -43,6 +39,17 @@ public class OmaHashMapTest {
         Koordinaatti v = new Koordinaatti(1, 2, 5, 'A');
         map.put(k, v);
         assertEquals(v,map.get(k));
+    }
+    
+    @Test
+    public void lisataanPaljonKoordinaatteja() {
+        for (int i = 0; i < 100000; i++) {
+            Koordinaatti k = new Koordinaatti(1,2,3,'s');
+            Koordinaatti v = new Koordinaatti(5,6,7,'s');
+            map.put(k, v);
+            assertEquals(v,map.get(k));
+            
+        }
     }
 
 

@@ -1,6 +1,5 @@
 package logiikka;
 
-import java.util.HashMap;
 import tietorakenteet.Keko;
 import tietorakenteet.OmaArrayList;
 import tietorakenteet.OmaHashMap;
@@ -46,7 +45,9 @@ public class LabyrinttiSolver {
      */
     public LabyrinttiSolver(Labyrintti labyrintti, boolean eukleides, int suoKerroin) {
         this.labyrintti = labyrintti;
-        edeltajat = new OmaHashMap(20000000);
+        //System.out.println(5*labyrintti.labyrintinKorkeus()*labyrintti.labyrintinLeveys());
+        edeltajat = new OmaHashMap(5*labyrintti.labyrintinKorkeus()*labyrintti.labyrintinLeveys());
+        //edeltajat = new HashMap();
         this.eukleides = eukleides;
         this.suoKerroin = suoKerroin;
     }
@@ -230,16 +231,16 @@ public class LabyrinttiSolver {
         return koordinaatit[x][y].getMerkki() == '#';
     }
 
-    private void asetaParasReitti(HashMap<Koordinaatti,Koordinaatti> edeltajat, Koordinaatti maali) {
-        Koordinaatti askel = maali;
-        parasReitti.add(askel);
-        
-        while (edeltajat.get(askel) != null) {
-            askel = edeltajat.get(askel);
-            parasReitti.add(askel);
-        }
-
-    }
+//    private void asetaParasReitti(HashMap<Koordinaatti,Koordinaatti> edeltajat, Koordinaatti maali) {
+//        Koordinaatti askel = maali;
+//        parasReitti.add(askel);
+//        
+//        while (edeltajat.get(askel) != null) {
+//            askel = edeltajat.get(askel);
+//            parasReitti.add(askel);
+//        }
+//
+//    }
         private void asetaParasReitti(OmaHashMap edeltajat, Koordinaatti maali) {
         Koordinaatti askel = maali;
         parasReitti.add(askel);

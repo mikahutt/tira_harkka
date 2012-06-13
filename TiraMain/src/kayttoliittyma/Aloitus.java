@@ -71,7 +71,7 @@ public class Aloitus implements Runnable,ActionListener{
 
 
     public void actionPerformed(ActionEvent e) {
-        if (!onkoInteger(suoKerroin.getText())) {
+        if (!onkoInteger(suoKerroin.getText()) || (Integer.parseInt(suoKerroin.getText())) < 0) {
             JOptionPane.showMessageDialog(frame, "RTFM");
             return;
         }
