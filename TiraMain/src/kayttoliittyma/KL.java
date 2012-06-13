@@ -19,7 +19,7 @@ import tietorakenteet.OmaArrayList;
 
 /**
  *
- * Ohjelman käyttöliittymä. Tästä tullee kevyt graafinen liittymä.
+ * Ohjelman käyttöliittymä. Näyttää valitun labyrintin.
  */
 public class KL implements Runnable,ActionListener {
 
@@ -33,9 +33,11 @@ public class KL implements Runnable,ActionListener {
 
     /**
      * Käyttöliitymä saa parametrina LabyrinttiSolver olion, jonka kautta se
-     * pääsee käsiksi sovelluslogiikan luokkiin.
+     * pääsee käsiksi sovelluslogiikan luokkiin. Toinen parametri on Bittikartta,
+     * jota käytetään dijkstran algoritmin kuvaamiseen.
      *
      * @param solveri
+     * @param kartta  
      */
     public KL(LabyrinttiSolver solveri, Bittikartta kartta) {
         this.solveri = solveri;
@@ -44,6 +46,9 @@ public class KL implements Runnable,ActionListener {
         koordinaatit = this.solveri.getKoordinaatit();
     }
 
+    /**
+     * Käynnistää käyttöliittymän
+     */
     public void run() {
         String teksti;
        if (solveri.isEukleides()) {
@@ -110,6 +115,10 @@ public class KL implements Runnable,ActionListener {
         kuvaLabel.paint(graffa);
     }
 
+    /**
+     * Kuuntelee "simuloi"-nappulaa. Tämä käynnistää privaatin-metodin, joka piirtää dijkstraa näytölle
+     * @param e 
+     */
     public void actionPerformed(ActionEvent e) {
         piirraaDijkstraa();
     }

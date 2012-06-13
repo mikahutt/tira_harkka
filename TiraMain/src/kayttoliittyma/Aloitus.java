@@ -14,7 +14,7 @@ import logiikka.Labyrintti;
 import logiikka.LabyrinttiSolver;
 
 /**
- *
+ * Aloitusikkuna, josta voi valita ajettavan labyrintin ja erilaisia asetuksia
  * @author MH
  */
 public class Aloitus implements Runnable,ActionListener{
@@ -25,6 +25,9 @@ public class Aloitus implements Runnable,ActionListener{
     private JTextField labyrintti;
     private JTextField suoKerroin;
 
+    /**
+     * Käynnistää aloitusruudun
+     */
     public void run() {
         frame = new JFrame("Valitse");
 
@@ -69,7 +72,11 @@ public class Aloitus implements Runnable,ActionListener{
         return str.matches("^-?[0-9]+(\\.[0-9]+)?$");
 }
 
-
+    /**
+     * Kuuntelee aloitusikkunassa olevaa nappulaa. Nappulaa painettaessa lukee arvot 
+     * ikkunasta ja käynnistää näiden perusteella simuloitavan labyrintin.
+     * @param e 
+     */
     public void actionPerformed(ActionEvent e) {
         if (!onkoInteger(suoKerroin.getText()) || (Integer.parseInt(suoKerroin.getText())) < 0) {
             JOptionPane.showMessageDialog(frame, "RTFM");

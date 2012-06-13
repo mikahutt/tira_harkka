@@ -8,7 +8,7 @@ import logiikka.Koordinaatti;
 
 /**
  *
- * Keko sisältää luokan KeonTaulukko, joka kapseloi sisäänsä tavallisen taulukon
+ * Keko sisältää luokan OmaArrayList, joka kapseloi sisäänsä tavallisen taulukon
  * joka sisältää koordinaatteja. Kun taulukko tulee täyteen, niin sen koko tuplataan.
  */
 public class OmaArrayList {
@@ -41,6 +41,10 @@ public class OmaArrayList {
         maara = 100;
     }
 
+    /**
+     * Palauttaa taulukon pituuden (EI alkioiden lukumäärää)
+     * @return 
+     */
     public int length() {
         return taulukko.length;
     }
@@ -105,6 +109,10 @@ public class OmaArrayList {
         return taulukko[i];
     }
     
+    /**
+     * Lisää koordinaatin listan seuraavaan vapaaseen paikkaan.
+     * @param koordinaatti 
+     */
     public void add(Koordinaatti koordinaatti) {
         this.lisaa((this.length()-(this.kuinkaMontaMahtuu())), koordinaatti);
     }

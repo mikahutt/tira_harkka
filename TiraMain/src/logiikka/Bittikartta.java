@@ -5,11 +5,8 @@
 package logiikka;
 
 import java.awt.image.BufferedImage;
-
 import java.io.File;
-
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 
 /**
@@ -25,13 +22,21 @@ public class Bittikartta {
     final static int MAALI = -1237980;
     private char[][] labyrintti;
     private int korkeus;
-
-    public void setKuva(BufferedImage kuva) {
-        this.kuva = kuva;
-    }
     private int leveys;
     private BufferedImage kuva;
 
+    /**
+     * Asettaa Bittikartalle kuvan
+     * @param kuva 
+     */
+    public void setKuva(BufferedImage kuva) {
+        this.kuva = kuva;
+    }
+
+    /**
+     * Palauttaa bittikartan sisältämän kuvan.
+     * @return 
+     */
     public BufferedImage getKuva() {
         return kuva;
     }

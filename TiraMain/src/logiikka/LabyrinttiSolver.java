@@ -5,7 +5,7 @@ import tietorakenteet.OmaArrayList;
 import tietorakenteet.OmaHashMap;
 
 /**
- * "Kirjastoluokka, joka sisältää metodeja labyrintin läpikäymiseen
+ * "Kirjastoluokka", joka sisältää metodeja labyrintin läpikäymiseen
  *
  */
 public class LabyrinttiSolver {
@@ -16,20 +16,39 @@ public class LabyrinttiSolver {
     private OmaArrayList parasReitti;
     //private HashMap<Koordinaatti,Koordinaatti> edeltajat;
     private OmaHashMap edeltajat;
+    private boolean eukleides;
 
+    /**
+     * Palauttaa tiedon siitä, onko labyrintin ratkaisussa käytössä euklidinen
+     * metriikka.
+     *
+     * @return
+     */
     public boolean isEukleides() {
         return eukleides;
     }
-    private boolean eukleides;
 
+    /**
+     * Palauttaa Dijkstran-algoritmin löytämän parhaan reitin.
+     * @return 
+     */
     public OmaArrayList getParasReitti() {
         return parasReitti;
     }
 
+    /**
+     * Asettaa parhaan reitin.
+     * @param parasReitti 
+     */
     public void setParasReitti(OmaArrayList parasReitti) {
         this.parasReitti = parasReitti;
     }
 
+    /**
+     * Palauttaa labyrinttiin liittyvän suokertoimen, eli tiedon siitä, kuinka paljon enemmän
+     * suolla kulkeminen "maksaa" suhteessa tavalliseen liikkumisalueeseen.
+     * @return 
+     */
     public int getSuoKerroin() {
         return suoKerroin;
     }
@@ -46,7 +65,7 @@ public class LabyrinttiSolver {
     public LabyrinttiSolver(Labyrintti labyrintti, boolean eukleides, int suoKerroin) {
         this.labyrintti = labyrintti;
         //System.out.println(5*labyrintti.labyrintinKorkeus()*labyrintti.labyrintinLeveys());
-        edeltajat = new OmaHashMap(5*labyrintti.labyrintinKorkeus()*labyrintti.labyrintinLeveys());
+        edeltajat = new OmaHashMap(5 * labyrintti.labyrintinKorkeus() * labyrintti.labyrintinLeveys());
         //edeltajat = new HashMap();
         this.eukleides = eukleides;
         this.suoKerroin = suoKerroin;
@@ -89,10 +108,18 @@ public class LabyrinttiSolver {
         return montaLiikkumista;
     }
 
+    /**
+     * Palauttaa luokan sisältämän koordinaatti-taulukon, joka on muodostettu parametrina saadusta labyrintista.
+     * @return 
+     */
     public Koordinaatti[][] getKoordinaatit() {
         return koordinaatit;
     }
 
+    /**
+     * Asettaa luokan sisäisen koordinaatti-taulukon.
+     * @param koordinaatit 
+     */
     public void setKoordinaatit(Koordinaatti[][] koordinaatit) {
         this.koordinaatit = koordinaatit;
     }
@@ -195,7 +222,8 @@ public class LabyrinttiSolver {
     /**
      *
      * relaksoi kaikki koordinaatin vierukset, eli suorittaa leveyssuuntaisen
-     * haun.
+     * haun. Jos käytössä on euklidinen metriikka, niin vieruksiksi määritellään
+     * myös diagonaalilla sijaitsevat koordinaatit.
      */
     private void relaksoiKaikkiVierukset(Koordinaatti p, Koordinaatti[][] koordinaatit, Keko valekeko) {
         if (!seina(koordinaatit, p.getX() - 1, p.getY())) {
@@ -231,20 +259,11 @@ public class LabyrinttiSolver {
         return koordinaatit[x][y].getMerkki() == '#';
     }
 
-//    private void asetaParasReitti(HashMap<Koordinaatti,Koordinaatti> edeltajat, Koordinaatti maali) {
-//        Koordinaatti askel = maali;
-//        parasReitti.add(askel);
-//        
-//        while (edeltajat.get(askel) != null) {
-//            askel = edeltajat.get(askel);
-//            parasReitti.add(askel);
-//        }
-//
-//    }
-        private void asetaParasReitti(OmaHashMap edeltajat, Koordinaatti maali) {
+
+    private void asetaParasReitti(OmaHashMap edeltajat, Koordinaatti maali) {
         Koordinaatti askel = maali;
         parasReitti.add(askel);
-        
+
         while (edeltajat.get(askel) != null) {
             askel = edeltajat.get(askel);
             parasReitti.add(askel);
