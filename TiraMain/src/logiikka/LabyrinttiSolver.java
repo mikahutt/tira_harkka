@@ -14,7 +14,6 @@ public class LabyrinttiSolver {
     private Koordinaatti[][] koordinaatit;
     private int suoKerroin;
     private OmaArrayList parasReitti;
-    //private HashMap<Koordinaatti,Koordinaatti> edeltajat;
     private OmaHashMap edeltajat;
     private boolean eukleides;
 
@@ -68,9 +67,7 @@ public class LabyrinttiSolver {
      */
     public LabyrinttiSolver(Labyrintti labyrintti, boolean eukleides, int suoKerroin) {
         this.labyrintti = labyrintti;
-        //System.out.println(5*labyrintti.labyrintinKorkeus()*labyrintti.labyrintinLeveys());
         edeltajat = new OmaHashMap(5 * labyrintti.labyrintinKorkeus() * labyrintti.labyrintinLeveys());
-        //edeltajat = new HashMap();
         this.eukleides = eukleides;
         this.suoKerroin = suoKerroin;
     }
@@ -86,7 +83,7 @@ public class LabyrinttiSolver {
 
         // Laitetaan talteen jokaista labyrintin kohtaa vastaava koordinaatti-olio
         koordinaatit = new Koordinaatti[labyrintti.labyrintinKorkeus()][labyrintti.labyrintinLeveys()];
-        // Dijkstran ydin, keko.
+        
         Keko valekeko = new Keko();
 
         parasReitti = new OmaArrayList();
