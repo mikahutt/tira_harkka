@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="MH-PC" name="logiikka.test.LabyrinttiSolverTest" tests="9" time="1.45" timestamp="2012-06-14T07:55:42">
+<testsuite errors="0" failures="0" hostname="MH-PC" name="logiikka.test.LabyrinttiSolverTest" tests="9" time="1.732" timestamp="2012-06-14T08:14:58">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="FI" />
@@ -443,15 +443,15 @@
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
   </properties>
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="oikeenKokoinenLabyrintti" time="0.14" />
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="koordinaattienAlustuksenAloituspaikkaToimii" time="0.109" />
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="mustaOnRisuaitaa" time="0.094" />
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="koordinaattienAlustusJaAloituksenPainoarvo" time="0.094" />
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="koordinaattienAlustuksenLopetuspaikkaToimii" time="0.093" />
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="aloituksenEtsintaToimii" time="0.093" />
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="onkoEpaKelpoSeuraajaToimii" time="0.094" />
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="relaksoidaanJotainKoordinaattia" time="0.094" />
-  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="dijkstranAlgoritmiPalauttaaOikeanPituuden" time="0.514" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="oikeenKokoinenLabyrintti" time="0.187" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="koordinaattienAlustuksenAloituspaikkaToimii" time="0.141" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="mustaOnRisuaitaa" time="0.124" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="koordinaattienAlustusJaAloituksenPainoarvo" time="0.125" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="koordinaattienAlustuksenLopetuspaikkaToimii" time="0.109" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="aloituksenEtsintaToimii" time="0.125" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="onkoEpaKelpoSeuraajaToimii" time="0.14" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="relaksoidaanJotainKoordinaattia" time="0.125" />
+  <testcase classname="logiikka.test.LabyrinttiSolverTest" name="dijkstranAlgoritmiPalauttaaOikeanPituuden" time="0.515" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
